@@ -24,7 +24,7 @@ if(owner == 'false'){
   owner = ownerName;
 }
 
-let push_to_org = core.getInput("push_to_org");
+let push_to_org = core.getInput("org");
 if(push_to_org == 'false'){
   push_to_org = false;
 }
@@ -90,7 +90,7 @@ const boostrap = async () => {
 
     const response = await setSecret(data)
 
-    if(response.status === 204){
+    if(response.status === 304){
       return "Succesfully updated secret.."
     }
     
