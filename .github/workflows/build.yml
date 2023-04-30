@@ -19,6 +19,7 @@ jobs:
       with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
     - run: npm install
+    - run: npm run lint
     - name: Test the action
       uses: ./.
       with:
