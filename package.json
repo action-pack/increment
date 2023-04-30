@@ -1,6 +1,6 @@
 {
   "name": "set-secret",
-  "version": "1.0.0",
+  "version": "1",
   "dependencies": {
     "@actions/github": "^1.0.1",
     "@octokit/core": "^3.1.2",
