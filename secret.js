@@ -103,6 +103,7 @@ const boostrap = async () => {
 
   }catch (e) {
     console.error(e)
+    core.setFailed(e.message);
   }
 }
 
@@ -115,6 +116,7 @@ boostrap()
     err => {
       // eslint-disable-next-line no-console
       console.log(err);
+      core.setFailed(err.message);
     }
   )
   .then(() => {
