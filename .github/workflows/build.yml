@@ -27,8 +27,7 @@ jobs:
         name: 'MY_VARIABLE'
         value: 'Lorem ipsun dolor simit'
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
-    - run: echo ${{vars.MY_VARIABLE }}
-  
+ 
   build:
     needs: test
     name: Build
@@ -37,7 +36,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: XXactions/checkout@v3
+        uses: actions/checkout@v3
         with:
            token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Setup Git
