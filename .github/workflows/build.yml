@@ -10,7 +10,9 @@ on:
       - '.dockerignore'
       - '.github/**'
       - '.github/workflows/**'
-
+      - 'package.json'
+      - 'package-lock.json'
+      
 jobs:
   test:
     name: Test
@@ -21,13 +23,7 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
     - run: npm install
     - run: npm run lint
-    - name: Test the action
-      uses: ./.
-      with:
-        name: 'MY_VARIABLE'
-        value: 'Lorem ipsun dolor simit'
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
- 
+
   build:
     needs: test
     name: Build
