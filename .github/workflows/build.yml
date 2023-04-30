@@ -81,14 +81,12 @@ jobs:
           release_name: v${{ secrets.MINOR }}
           commitish: release/v${{ secrets.MINOR }}
           body: Created using automated workflow
-          draft: false
-          prerelease: false
       -
         name: Increment minor version
         run: echo "NEW_MINOR=$((${{ secrets.MINOR }}+1))" >> $GITHUB_ENV
       -
        name: Update minor version
-       uses: hmanzur/actions-set-secret@v2.0.0
+       uses: kroese/set-secret@v3
        with:
          name: 'MINOR'
          value: ${{ env.NEW_MINOR }}
