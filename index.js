@@ -120,7 +120,7 @@ const boostrap = async () => {
     }
 
   }catch (e) {
-    core.setFailed(e.message);
+    core.setFailed(get_() + ": " + e.message);
   }
 }
 
