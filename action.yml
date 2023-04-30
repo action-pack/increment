@@ -1,8 +1,8 @@
-name: 'Set Secret'
+name: 'Set Variable'
 
 author: kroese
 
-description: 'Action to set secrets in a repository'
+description: 'Action to set repository variables'
 
 branding:
   icon: lock
@@ -10,11 +10,11 @@ branding:
 
 inputs:
   name:
-    description: Secret name
+    description: Name
     required: true
 
   value:
-    description: Secret value
+    description: Value
     required: true
 
   repository:
