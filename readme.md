@@ -11,9 +11,7 @@ Use to create or update a secret on Repository or Organization
 ### repository
 Repository to store. 
 
-Default is `false`.
-
-If is `false` reposiroty will be retreived from [context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context).
+If left empty current repository will be used.
 
 ### owner
   description: Owner of repository
