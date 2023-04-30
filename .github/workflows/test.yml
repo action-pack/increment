@@ -1,16 +1,13 @@
-name: Test
-
-on:
-  [push]
+on: [workflow_call]
+name: "Test"
+permissions: {}
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-
     - run: npm install
-
     - name: Test the action
       uses: ./.
       with:
@@ -18,4 +15,3 @@ jobs:
         value: 'Lorem ipsun dolor simit'
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
     - run: echo ${{secrets.MY_SECRET }} | sed 's/./& /g'
-    
