@@ -8,7 +8,7 @@ Action to set repository variables.
 ```YAML
 uses: kroese/set-variable@v3
 with:
-  name: 'MY_SECRET'
+  name: 'MY_VARIABLE'
   value: 'Lorem ipsun dolor simit'
   token: ${{ secrets.REPO_ACCESS_TOKEN }}
 ```
