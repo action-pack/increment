@@ -75,7 +75,7 @@ const existVariable = (varname) => {
   url += get_()
   url += '/actions/variables/' + name
 
-  const response = await octokit.request(url, {
+  const response = octokit.request(url, {
   owner: owner,
   repo: repository,
   name: varname } )
