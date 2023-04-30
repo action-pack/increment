@@ -1,7 +1,7 @@
 # Set Secret
 [![Release](https://github.com/kroese/set-secret/actions/workflows/build.yml/badge.svg)](https://github.com/kroese/set-secret/actions/workflows/build.yml)
 
-Action to create or update a secret in a repository.
+Action to set secrets in a repository.
 
 ## Usage
 
