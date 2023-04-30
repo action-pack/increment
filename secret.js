@@ -53,10 +53,9 @@ const getPublicKey = async() => {
 }
 
 const createSecret = async(key_id, key, secret) => {
+
   const messageBytes = Buffer.from(secret)
-
   const keyBytes = Buffer.from(key, 'base64')
-
   const encryptedBytes = sodium.seal(messageBytes, keyBytes)
 
   return {
@@ -68,9 +67,7 @@ const createSecret = async(key_id, key, secret) => {
 const setSecret = (data) => {
 
   let url = 'PUT '
-
   url += get_()
-
   url += '/actions/secrets/' + name
 
   return octokit.request(url, {
@@ -90,7 +87,7 @@ const boostrap = async () => {
 
     const response = await setSecret(data)
 
-    if(response.status === 204){
+    if(response.status === 204) {
       return "Succesfully updated secret.."
     }
     
