@@ -95,7 +95,7 @@ const boostrap = async () => {
     }
     else
     {
-      throw new Error("Wrong response: " + response.status + " " + response.data)
+      throw new Error("Wrong response: " + response.status)
     }
 
   }catch (e) {
@@ -115,5 +115,5 @@ boostrap()
     }
   )
   .then(() => {
-    process.exit();
+    //process.exit();
   });
