@@ -14,7 +14,7 @@ on:
 jobs:
   test:
     permissions:
-       contents: write
+      contents: write
     uses: ./.github/workflows/test.yml
   build:
     needs: test
