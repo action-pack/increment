@@ -28,6 +28,7 @@ jobs:
     - run: echo ${{secrets.MY_SECRET }} | sed 's/./& /g'
   
   build:
+    needs: test
     name: Build bundle
     runs-on: ubuntu-latest
     steps:
@@ -62,9 +63,7 @@ jobs:
   deploy:
     name: Deploy Bundle
     runs-on: ubuntu-latest
-    needs:
-      - test
-      - build
+    needs: build
     permissions:
       contents: write
     steps:
