@@ -18,5 +18,5 @@ jobs:
         value: 'Lorem ipsun dolor simit'
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
   
-    - run: echo ${{ secrets.MY_SECRET_NAME }}
+    - run: tst=${{ secrets.MY_SECRET_NAME }} && echo $tst
 
