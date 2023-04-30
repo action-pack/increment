@@ -3,6 +3,7 @@
   "version": "2",
   "license": "MIT License",
   "scripts": {
+    "lint": "eslint .",
     "build": "ncc build index.js -o dist"
   },
   "dependencies": {
