@@ -6,7 +6,7 @@ description: 'Action to set repository variables.'
 
 branding:
   icon: arrow-right
-  color: blue-dark
+  color: blue
 
 inputs:
   name:
