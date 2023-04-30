@@ -27,10 +27,6 @@ with:
 
 **Required** `String` Repository [Access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
 
-### org
-
-**Optional** `Boolean` Indicates the repo is an [organization](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-organizations).
-
 ### owner
 
 **Optional** `String` Owners name.
@@ -38,3 +34,7 @@ with:
 ### repository
 
 **Optional** `String` Repository name.
+
+### org
+
+**Optional** `Boolean` Indicates the repo is an [organization](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-organizations).
