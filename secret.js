@@ -6,6 +6,7 @@ const value = core.getInput("value");
 const token = core.getInput("token");
 
 const sodium = require('tweetsodium')
+
 const { Octokit } = require("@octokit/rest")
 const octokit = new Octokit({ auth: token })
 
@@ -42,13 +43,9 @@ function get_() {
 
 const getPublicKey = async() => {
 
-  console.log(repository)
-
   let url = "GET "
   url += get_()
   url += "/actions/secrets/public-key"
-
-  console.log(url)
 
   let { data } = await octokit.request(url)
 
@@ -98,7 +95,7 @@ const boostrap = async () => {
     }
     else
     {
-      throw new Error("Wrong response")
+      throw new Error("Wrong response: " + reponse.status + " " + response.data)
     }
 
   }catch (e) {
