@@ -1,8 +1,8 @@
 {
-  "name": "set-secret",
+  "name": "set-variable",
   "version": "2",
   "license": "MIT License",
-  "repository": "https://github.com/kroese/set-secret",
+  "repository": "https://github.com/kroese/set-variable",
   "scripts": {
     "lint": "eslint . --fix",
     "build": "ncc build index.js -o dist"
