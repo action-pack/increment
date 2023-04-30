@@ -1,0 +1,41 @@
+name: Release
+
+on: 
+  push:
+    branches:
+      - master
+
+    paths-ignore:
+      - '**/*.md'
+      - '.gitignore'
+      - '.dockerignore'
+      - '.github/**'
+      - '.github/workflows/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+ 
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+      - name: Publish new version
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com 
+          git tag -fa v${{ secrets.MINOR }} -m "Update v${{ secrets.MINOR }} tag"
+          git push origin v${{ secrets.MINOR }} --force
+      -
+        name: Increment minor version
+        run: echo "NEW_MINOR=$((${{ secrets.MINOR }}+1))" >> $GITHUB_ENV
+      -
+       name: Update minor version
+       uses: hmanzur/actions-set-secret@v2.0.0
+       with:
+         name: 'MINOR'
+         value: ${{ env.NEW_MINOR }}
+         repository: ${{ github.repository }}
+         token: ${{ secrets.REPO_ACCESS_TOKEN }}
