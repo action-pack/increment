@@ -38,4 +38,4 @@ inputs:
 
 runs:
   using: 'node16'
-  main: 'secret.js'
+  main: 'index.js'
