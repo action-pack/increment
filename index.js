@@ -43,31 +43,7 @@ function get_() {
 
 }
 
-const getPublicKey = async() => {
-
-  let url = "GET "
-  url += get_()
-  url += "/actions/secrets/public-key"
-
-  let { data } = await octokit.request(url)
-
-  return data;
-}
-
-const createSecret = async(key_id, key, secret) => {
-
-  const messageBytes = Buffer.from(secret)
-  const keyBytes = Buffer.from(key, 'base64')
-  const encryptedBytes = sodium.seal(messageBytes, keyBytes)
-
-  return {
-    encrypted_value: Buffer.from(encryptedBytes).toString('base64'),
-    key_id
-  }
-
-}
-
-const setSecret = (data) => {
+const setVariable = (data) => {
 
   let url = 'PUT '
   url += get_()
@@ -81,18 +57,11 @@ const setSecret = (data) => {
 
 const boostrap = async () => {
   try {
-    const {key_id, key} = await getPublicKey()
+    
+    const response = await setVariable(value)
 
-    let data = await createSecret(key_id, key, value)
-
-    if(push_to_org){
-      data['visibility'] = 'all'
-    }
-
-    const response = await setSecret(data)
-
-    if(response.status === 204) {
-      return "Succesfully updated secret.."
+    if(response.status === 504) {
+      return "Succesfully updated variable.."
     }
     
     throw new Error("Wrong response: " + response.status)
