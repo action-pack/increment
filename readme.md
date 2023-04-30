@@ -14,18 +14,13 @@ Repository (optional)
 If left empty current repository will be used.
 
 ### owner
-  description: Owner of repository
-  default: false
-  required: false
-
+Owner of repository (optional)
+  
 ### push_to_org
-  description: Flag to use organization endpoint for secret
-  default: false
-  required: false
-
+Flag to use organization endpoint for secret
+  
 ### token:
 **Required** Repository [Access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
-
 
 ## Usage
 ### Custom repository
