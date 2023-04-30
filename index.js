@@ -45,7 +45,7 @@ const createVariable = (data) => {
 
   let url = 'POST '
   url += get_()
-  url += '/actions/variables/' + name
+  url += '/actions/variables'
 
   return octokit.request(url, {
   owner: owner,
