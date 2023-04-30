@@ -5,8 +5,8 @@ author: kroese
 description: 'Action to set repository variables'
 
 branding:
-  icon: lock
-  color: gray-dark
+  icon: arrow-right
+  color: blue-dark
 
 inputs:
   name:
