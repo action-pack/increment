@@ -23,7 +23,7 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
     - run: npm install
     - run: npm run lint
-
+  
   build:
     needs: test
     name: Build
@@ -39,7 +39,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com 
-          git checkout -b release/v${{ secrets.MINOR }}
+          git checkout -b release/v${{ vars.MINOR }}
       - name: Test and Build
         uses: actions/setup-node@v3
         with:
@@ -54,11 +54,11 @@ jobs:
           rm -Rf node_modules/
           rm -Rf .github
           rm index.js
-      - name: Git Create Branch release/v${{ secrets.MINOR }} 
+      - name: Git Create Branch release/v${{ vars.MINOR }} 
         run: |
           git add .
           git commit -m "Auto commit from Github Actions #${{ github.run_id }}"
-          git push origin release/v${{ secrets.MINOR }} -f
+          git push origin release/v${{ vars.MINOR }} -f
 
   release:
     name: Release
@@ -73,27 +73,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
-          tag_name: v${{ secrets.MINOR }}
-          release_name: v${{ secrets.MINOR }}
-          commitish: release/v${{ secrets.MINOR }}
+          tag_name: v${{ vars.MINOR }}
+          release_name: v${{ vars.MINOR }}
+          commitish: release/v${{ vars.MINOR }}
           body: Created using automated workflow
       -
         name: Increment minor version
-        run: echo "NEW_MINOR=$((${{ secrets.MINOR }}+1))" >> $GITHUB_ENV
-      -
-        name: Update minor version
-        uses: kroese/set-secret@v4
-        with:
-          name: 'MINOR'
-          value: ${{ env.NEW_MINOR }}
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-      -
-        name: Update major version variable
-        uses: kroese/set-variable@v2
-        with:
-          name: 'MAJOR'
-          value: ${{ secrets.MAJOR }}
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        run: echo "NEW_MINOR=$((${{ vars.MINOR }}+1))" >> $GITHUB_ENV
       -
         name: Update minor version variable
         uses: kroese/set-variable@v2
