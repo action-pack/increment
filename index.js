@@ -86,13 +86,19 @@ const existVariable = (varname) => {
 }
 
 const boostrap = async () => {
+  
   try {
+    
     if(existVariable(name)) {
+      
        const response = await setVariable(value)
        
        if(response.status === 504) {
           return "Succesfully updated variable.."
        }
+      
+      throw new Error("Wrong response: " + response.status)
+      
     }
     else
     {
@@ -101,9 +107,9 @@ const boostrap = async () => {
       if(response.status === 504) {
           return "Succesfully created variable.."
        }
+      
+      throw new Error("Wrong response: " + response.status)
     }
-
-    throw new Error("Wrong response: " + response.status)
 
   }catch (e) {
     core.setFailed(e.message);
