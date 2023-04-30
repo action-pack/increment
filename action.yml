@@ -2,7 +2,7 @@ name: 'Set Variable'
 
 author: kroese
 
-description: 'Action to set repository variables'
+description: 'Action to set repository variables.'
 
 branding:
   icon: arrow-right
