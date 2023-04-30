@@ -51,10 +51,7 @@ const setVariable = (data) => {
   owner: owner,
   repo: repository,
   name: name,
-  value: data,
-  headers: {
-    'X-GitHub-Api-Version': '2022-11-28'
-  })
+  value: data } )
   
 }
 
