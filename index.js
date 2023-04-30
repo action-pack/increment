@@ -79,9 +79,11 @@ const existVariable = (varname) => {
   owner: owner,
   repo: repository,
   name: varname } )
- 
-  console.log(response)
-
+  
+  response.then(function(result){
+    console.log(result.status)
+  })
+  
   return false
 }
 
