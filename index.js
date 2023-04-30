@@ -69,39 +69,39 @@ const setVariable = (data) => {
   
 }
 
-const existVariable = (varname) => {
+const getVariable = (varname) => {
 
   let url = 'GET '
   url += get_()
   url += '/actions/variables/' + name
   
-  try {
-    
-    const response = octokit.request(url, {
-    owner: owner,
-    repo: repository,
-    name: varname } )
+  return octokit.request(url, {
+  owner: owner,
+  repo: repository,
+  name: varname } )
   
-    response.then(function(result){
-       if(result.status === 504) {
-          return true
-       }
-      console.log("RESSSULLLT: " + result.status)
-    })
-    
-  } catch (e) {
-    return false
-  }
-  
-  return false
 }
 
 const boostrap = async () => {
   
+  bool exists = false
+  
   try {
     
-    if(existVariable(name)) {
-       console.log("x2")
+    const response = await getVariable(name)
+  
+    exist = (response.status === 504) 
+          
+    console.log("RESSSULLLT: " + result.status)
+    
+  } catch (e) {
+    exists = false
+  }
+  
+  try {
+    
+    if(exists) {
+       
        const response = await setVariable(value)
        
        if(response.status === 504) {
@@ -113,7 +113,7 @@ const boostrap = async () => {
     }
     else
     {
-      console.log("x3")
+      
       const response = await createVariable(value)
       
       if(response.status === 504) {
