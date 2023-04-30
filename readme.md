@@ -6,7 +6,7 @@ Action to set repository variables.
 ## Usage
 
 ```YAML
-uses: kroese/set-variable@v2
+uses: kroese/set-variable@v3
 with:
   name: 'MY_VARIABLE'
   value: 'Lorem ipsun dolor simit'
