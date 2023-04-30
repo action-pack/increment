@@ -43,19 +43,24 @@ function get_() {
 
 const setVariable = (data) => {
 
-  let url = 'PUT '
+  let url = 'PATCH '
   url += get_()
   url += '/actions/variables/' + name
 
   return octokit.request(url, {
-    name: name, value: data
+  owner: owner,
+  repo: repository,
+  name: name,
+  value: data,
+  headers: {
+    'X-GitHub-Api-Version': '2022-11-28'
   })
-
+  
 }
 
 const boostrap = async () => {
   try {
-    
+
     const response = await setVariable(value)
 
     if(response.status === 504) {
