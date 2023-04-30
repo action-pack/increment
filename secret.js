@@ -100,6 +100,7 @@ const boostrap = async () => {
   }catch (e) {
     core.setFailed(e.message);
   }
+
 }
 
 boostrap()
