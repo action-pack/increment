@@ -41,6 +41,20 @@ function get_() {
 
 }
 
+const createVariable = (data) => {
+
+  let url = 'POST '
+  url += get_()
+  url += '/actions/variables/' + name
+
+  return octokit.request(url, {
+  owner: owner,
+  repo: repository,
+  name: name,
+  value: data } )
+  
+}
+
 const setVariable = (data) => {
 
   let url = 'PATCH '
@@ -55,10 +69,32 @@ const setVariable = (data) => {
   
 }
 
+const existVariable = (varname) => {
+
+  let url = 'GET '
+  url += get_()
+  url += '/actions/variables/' + name
+
+  const response = await octokit.request(url, {
+  owner: owner,
+  repo: repository,
+  name: varname } )
+  value: data } )
+  
+  console.log(response.status)
+
+  return false
+}
+
 const boostrap = async () => {
   try {
-
-    const response = await setVariable(value)
+    if(existVariable(name)) {
+       const response = await setVariable(value)
+    }
+    else
+    {
+      const response = await createVariable(value)
+    }
 
     if(response.status === 504) {
       return "Succesfully updated variable.."
