@@ -50,7 +50,7 @@ const setVariable = (data) => {
   url += '/actions/variables/' + name
 
   return octokit.request(url, {
-    data
+    name: name, value: data
   })
 
 }
