@@ -17,11 +17,11 @@ with:
 
 ### name
 
-**Required** `String` Secret name.
+**Required** `String` Variable name.
 
 ### value
 
-**Required** `String` Secret value to store.
+**Required** `String` Value to store.
 
 ### token
 
