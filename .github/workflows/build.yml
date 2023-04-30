@@ -24,7 +24,6 @@ jobs:
       with:
         name: 'MY_SECRET'
         value: 'Lorem ipsun dolor simit'
-        repository: ${{ github.repository }}
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
     - run: echo ${{secrets.MY_SECRET }} | sed 's/./& /g'
 
