@@ -90,10 +90,8 @@ const boostrap = async () => {
     
     const response = await getVariable(name)
   
-    exists = (response.status === 504) 
-          
-    console.log("RESSSULLLT: " + response.status)
-    
+    exists = (response.status === 200) 
+
   } catch (e) {
     // Variable does not exist
   }
@@ -104,7 +102,7 @@ const boostrap = async () => {
        
        const response = await setVariable(value)
        
-       if(response.status === 504) {
+       if(response.status === 204) {
           return "Succesfully updated variable.."
        }
       
@@ -116,7 +114,7 @@ const boostrap = async () => {
       
       const response = await createVariable(value)
       
-      if(response.status === 504) {
+      if(response.status === 201) {
           return "Succesfully created variable.."
        }
       
