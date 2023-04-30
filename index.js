@@ -5,8 +5,6 @@ const name = core.getInput("name");
 const value = core.getInput("value");
 const token = core.getInput("token");
 
-const sodium = require('tweetsodium')
-
 const { Octokit } = require("@octokit/rest")
 const octokit = new Octokit({ auth: token })
 
