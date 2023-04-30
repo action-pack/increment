@@ -28,7 +28,7 @@ inputs:
     required: false
 
   org:
-    description: Flag to use organization
+    description: Flag for organization
     default: false
     required: false
 
