@@ -1,12 +1,12 @@
-# Set Secret
-[![Release](https://github.com/kroese/set-secret/actions/workflows/build.yml/badge.svg)](https://github.com/kroese/set-secret/actions/workflows/build.yml)
+# Set Variable
+[![Release](https://github.com/kroese/set-variable/actions/workflows/build.yml/badge.svg)](https://github.com/kroese/set-variable/actions/workflows/build.yml)
 
-Action to set secrets in a repository.
+Action to set repository variables.
 
 ## Usage
 
 ```YAML
-uses: kroese/set-secret@v3
+uses: kroese/set-variable@v3
 with:
   name: 'MY_SECRET'
   value: 'Lorem ipsun dolor simit'
