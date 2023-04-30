@@ -3,13 +3,13 @@ Action to create or update a secret in a repository.
 
 ## Inputs
 ### name
-**Required** Secret name.
+Secret name (required)
 
 ### value
-**Required** Secret value to store.
+Secret value (required)
 
 ### repository
-Repository to store. 
+Repository (optional)
 
 If left empty current repository will be used.
 
