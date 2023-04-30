@@ -90,8 +90,8 @@ const boostrap = async () => {
 
     const response = await setSecret(data)
 
-    if(response.status === 304){
-      console.log("Succesfully set secret..")
+    if(response.status === 204){
+      console.log("Succesfully updated secret..")
     }
     else
     {
@@ -115,5 +115,5 @@ boostrap()
     }
   )
   .then(() => {
-    //process.exit();
+    process.exit();
   });
