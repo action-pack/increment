@@ -25,7 +25,7 @@ Flag to use organization endpoint for secret
 ## Usage
 ### Custom repository
 ```YAML
-uses: hmanzur/actions-set-secret@v1.0.0
+uses: kroese/set-secret@v1
 with:
   name: 'MY_SECRET_NAME'
   value: 'Lorem ipsun dolor simit'
@@ -35,7 +35,7 @@ with:
 ```
 ### Same repository from action
 ```YAML
-uses: hmanzur/actions-set-secret@v1.0.0
+uses: kroese/set-secret@v1
 with:
   name: 'MY_SECRET_NAME'
   value: 'Lorem ipsun dolor simit'
@@ -44,7 +44,7 @@ with:
 
 ### Custom organization
 ```YAML
-uses: hmanzur/actions-set-secret@v1.0.0
+uses: kroese/set-secret@v1
 with:
   name: 'MY_SECRET_NAME'
   value: 'Lorem ipsun dolor simit'
@@ -54,7 +54,7 @@ with:
 ```
 ### Same organization from action
 ```YAML
-uses: hmanzur/actions-set-secret@v1.0.0
+uses: kroese/set-secret@v1
 with:
   name: 'MY_SECRET_NAME'
   value: 'Lorem ipsun dolor simit'
