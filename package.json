@@ -4,7 +4,7 @@
   "license": "MIT License",
   "repository": "https://github.com/kroese/set-secret",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "build": "ncc build index.js -o dist"
   },
   "dependencies": {
