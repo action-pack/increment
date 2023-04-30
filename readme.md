@@ -1,5 +1,5 @@
-# Set Secret Action
-Use to create or update a secret on Repository or Organization
+# Set Secret
+Action to create or update a secret in a repository.
 
 ## Inputs
 ### name
