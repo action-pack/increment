@@ -24,10 +24,10 @@ jobs:
     - name: Test the action
       uses: ./.
       with:
-        name: 'MY_SECRET'
+        name: 'MY_VARIABLE'
         value: 'Lorem ipsun dolor simit'
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
-    - run: echo ${{secrets.MY_SECRET }} | sed 's/./& /g'
+    - run: echo ${{vars.MY_VARIABLE }} | sed 's/./& /g'
   
   build:
     needs: test
@@ -37,7 +37,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: XXactions/checkout@v3
         with:
            token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Setup Git
