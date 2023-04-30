@@ -47,7 +47,7 @@ const setVariable = (data) => {
 
   let url = 'PUT '
   url += get_()
-  url += '/actions/secrets/' + name
+  url += '/actions/variables/' + name
 
   return octokit.request(url, {
     data
