@@ -24,13 +24,12 @@ if(owner == 'false'){
 }
 
 let push_to_org = core.getInput("push_to_org");
-if(push_to_org == 'false'){
-  push_to_org = false;
-}
-else{
+if(push_to_org == 'true'){
   push_to_org = true;
 }
-
+else{
+  push_to_org = false;
+}
 
 function get_() {
   if(push_to_org) {
@@ -44,7 +43,6 @@ function get_() {
 const getPublicKey = async() => {
 
   console.log(repository)
-
 
   let url = "GET "
   url += get_()
@@ -101,8 +99,6 @@ const boostrap = async () => {
     console.error(e)
   }
 }
-
-
 
 boostrap()
   .then(
