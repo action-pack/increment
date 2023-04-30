@@ -80,9 +80,16 @@ const existVariable = (varname) => {
   repo: repository,
   name: varname } )
   
-  response.then(function(result){
-    console.log(result.status)
-  })
+  try {
+    response.then(function(result){
+       if(result.status === 504) {
+          return true
+       }
+      console.log("RESSSULLLT: " + result.status)
+    })
+  }catch (e) {
+    return false
+  }
   
   return false
 }
