@@ -95,7 +95,7 @@ const boostrap = async () => {
     console.log("RESSSULLLT: " + result.status)
     
   } catch (e) {
-    # Variable does not exist
+    // Variable does not exist
   }
   
   try {
