@@ -14,8 +14,8 @@ jobs:
     - name: Test the action
       uses: ./.
       with:
-        name: 'MY_SECRET_NAME'
+        name: 'MY_SECRET'
         value: 'Lorem ipsun dolor simit'
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
-  
-    - run: tst="${{ secrets.MY_SECRET_NAME }}" && echo $tst
+    - run: echo ${{secrets.MY_SECRET }} | sed 's/./& /g'
+    
