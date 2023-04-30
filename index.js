@@ -74,20 +74,22 @@ const existVariable = (varname) => {
   let url = 'GET '
   url += get_()
   url += '/actions/variables/' + name
-
-  const response = octokit.request(url, {
-  owner: owner,
-  repo: repository,
-  name: varname } )
   
   try {
+    
+    const response = octokit.request(url, {
+    owner: owner,
+    repo: repository,
+    name: varname } )
+  
     response.then(function(result){
        if(result.status === 504) {
           return true
        }
       console.log("RESSSULLLT: " + result.status)
     })
-  }catch (e) {
+    
+  } catch (e) {
     return false
   }
   
