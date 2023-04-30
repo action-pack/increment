@@ -2,15 +2,32 @@
   "name": "set-secret",
   "version": "2",
   "license": "MIT License",
+  "repository": "https://github.com/kroese/set-secret",
   "scripts": {
     "lint": "eslint .",
     "build": "ncc build index.js -o dist"
   },
   "dependencies": {
+    "@actions/core": "^1.9.1",
     "@actions/github": "^2.2.0",
     "@octokit/core": "^3.1.2",
-    "@actions/core": "^1.9.1",
     "eslint": "^7.6.0",
     "tweetsodium": "0.0.5"
+  },
+  "devDependencies": {
+    "eslint-config-strongloop": "^2.1.0",
+    "eslint-plugin-jsdoc": "^30.2.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.js": [
+      "eslint . --fix"
+    ]
   }
 }
