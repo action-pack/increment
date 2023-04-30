@@ -64,13 +64,25 @@ jobs:
           git commit -m "Auto commit from Github Actions #${{ github.run_id }}"
           git push origin release/v${{ secrets.MINOR }} -f
 
-  bump:
-    name: Bump version
+  release:
+    name: Release
     runs-on: ubuntu-latest
     needs: build
     permissions:
       contents: write
     steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+        with:
+          tag_name: v${{ secrets.MINOR }}
+          release_name: v${{ secrets.MINOR }}
+          commitish: release/v${{ secrets.MINOR }}
+          body: Created using automated workflow
+          draft: false
+          prerelease: false
       -
         name: Increment minor version
         run: echo "NEW_MINOR=$((${{ secrets.MINOR }}+1))" >> $GITHUB_ENV
