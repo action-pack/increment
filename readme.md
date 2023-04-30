@@ -3,6 +3,17 @@
 
 Action to create or update a secret in a repository.
 
+## Usage
+
+```YAML
+uses: kroese/set-secret@v2
+with:
+  name: 'MY_SECRET_NAME'
+  value: 'Lorem ipsun dolor simit'
+  repository: ${{ github.repository }}
+  token: ${{ secrets.REPO_ACCESS_TOKEN }}
+```
+
 ## Inputs
 
 ### name
@@ -20,14 +31,3 @@ Action to create or update a secret in a repository.
 ### org
 
 **Optional** `Boolean` Indicates the repo is an [organization](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-organizations).
-
-## Usage
-
-```YAML
-uses: kroese/set-secret@v1
-with:
-  name: 'MY_SECRET_NAME'
-  value: 'Lorem ipsun dolor simit'
-  repository: ${{ github.repository }}
-  token: ${{ secrets.REPO_ACCESS_TOKEN }}
-```
