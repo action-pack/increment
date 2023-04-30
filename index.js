@@ -84,18 +84,18 @@ const getVariable = (varname) => {
 
 const boostrap = async () => {
   
-  bool exists = false
+  let exists = false
   
   try {
     
     const response = await getVariable(name)
   
-    exist = (response.status === 504) 
+    exists = (response.status === 504) 
           
     console.log("RESSSULLLT: " + result.status)
     
   } catch (e) {
-    exists = false
+    # Variable does not exist
   }
   
   try {
