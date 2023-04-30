@@ -1,8 +1,8 @@
-name: 'Set Action Secret'
+name: 'Set Secret'
 
 author: kroese
 
-description: 'Create or update secrets in github repository'
+description: 'Action to set secrets in a repository'
 
 branding:
   icon: lock
