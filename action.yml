@@ -1,6 +1,6 @@
 name: 'Set Action Secret'
 
-author: Habid Manzur
+author: kroese
 
 description: 'Create or update secrets in github repository'
 
@@ -27,8 +27,8 @@ inputs:
     default: false
     required: false
 
-  push_to_org:
-    description: Flag to use organization endpoint for secret
+  org:
+    description: Flag to use organization
     default: false
     required: false
 
