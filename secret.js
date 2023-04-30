@@ -15,17 +15,17 @@ const repoName = context.payload.repository.name;
 const ownerName = context.payload.repository.owner.login;
 
 let repository = core.getInput("repository");
-if(repository == 'false'){
+if(repository === 'false'){
   repository = repoName;
 }
 
 let owner = core.getInput("owner");
-if(owner == 'false'){
+if(owner === 'false'){
   owner = ownerName;
 }
 
 let push_to_org = core.getInput("org");
-if(push_to_org == 'false'){
+if(push_to_org === 'false'){
   push_to_org = false;
 }
 else{
