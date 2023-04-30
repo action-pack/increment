@@ -1,6 +1,5 @@
 on: [workflow_call]
 name: "Test"
-permissions: {}
 
 jobs:
   test:
