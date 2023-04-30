@@ -30,3 +30,11 @@ with:
 ### org
 
 **Optional** `Boolean` Indicates the repo is an [organization](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-organizations).
+
+### owner
+
+**Optional** `String` Owners name.
+
+### repository
+
+**Optional** `String` Repository name.
