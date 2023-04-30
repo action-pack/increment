@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-       with:
+      with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
     - run: npm install
     - name: Test the action
