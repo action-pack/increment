@@ -24,11 +24,11 @@ if(owner == 'false'){
 }
 
 let push_to_org = core.getInput("push_to_org");
-if(push_to_org == 'true'){
-  push_to_org = true;
+if(push_to_org == 'false'){
+  push_to_org = false;
 }
 else{
-  push_to_org = false;
+  push_to_org = true;
 }
 
 function get_() {
