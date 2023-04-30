@@ -76,7 +76,7 @@ const existVariable = (varname) => {
   url += '/actions/variables/' + name
   
   try {
-    
+    console.log("request")
     const response = octokit.request(url, {
     owner: owner,
     repo: repository,
@@ -100,6 +100,7 @@ const boostrap = async () => {
   
   try {
     
+    console.log("exist")
     if(existVariable(name)) {
       
        const response = await setVariable(value)
