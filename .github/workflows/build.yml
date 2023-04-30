@@ -43,7 +43,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com 
-          git checkout -b release/${{ secrets.MINOR }}
+          git checkout -b release/v${{ secrets.MINOR }}
       - name: Test and Build
         uses: actions/setup-node@v2
         with:
@@ -58,11 +58,11 @@ jobs:
           rm -Rf node_modules/
           rm -Rf .github
           rm index.js
-      - name: Git Create Branch release/${{ secrets.MINOR }} 
+      - name: Git Create Branch release/v${{ secrets.MINOR }} 
         run: |
           git add .
           git commit -m "Auto commit from Github Actions #${{ github.run_id }}"
-          git push origin release/${{ secrets.MINOR }} -f
+          git push origin release/v${{ secrets.MINOR }} -f
 
   deploy:
     name: Deploy Bundle
@@ -85,7 +85,7 @@ jobs:
         run: echo "NEW_MINOR=$((${{ secrets.MINOR }}+1))" >> $GITHUB_ENV
       -
        name: Update minor version
-       uses: kroese/set-secret@v1
+       uses: hmanzur/actions-set-secret@v2.0.0
        with:
          name: 'MINOR'
          value: ${{ env.NEW_MINOR }}
