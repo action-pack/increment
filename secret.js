@@ -93,11 +93,13 @@ const boostrap = async () => {
 
     const response = await setSecret(data)
 
-    if(response.status != 304){
+    if(response.status != "304"){
       console.error(response.status)
     }
-    
-    console.log("Succesfully set secret..")
+    else
+    {
+      console.log("Succesfully set secret..")
+    }
 
   }catch (e) {
     console.error(e)
