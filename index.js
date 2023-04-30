@@ -22,13 +22,7 @@ if(owner === 'false'){
   owner = ownerName;
 }
 
-let push_to_org = core.getInput("org");
-if(push_to_org === 'false'){
-  push_to_org = false;
-}
-else{
-  push_to_org = true;
-}
+let push_to_org = (core.getInput("org") !== 'false');
 
 function get_() {
 
@@ -38,9 +32,9 @@ function get_() {
   else {
     if(repository.includes("/"))
     {
-      return '/repos/' + owner + '/' + repository;
+      return '/repos/' + repository;
     }
-    return '/repos/' + repository;
+    return '/repos/' + owner + '/' + repository;
   }
 
 }
