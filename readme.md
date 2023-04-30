@@ -8,9 +8,8 @@ Action to set secrets in a repository.
 ```YAML
 uses: kroese/set-secret@v3
 with:
-  name: 'MY_SECRET_NAME'
+  name: 'MY_SECRET'
   value: 'Lorem ipsun dolor simit'
-  repository: ${{ github.repository }}
   token: ${{ secrets.REPO_ACCESS_TOKEN }}
 ```
 
