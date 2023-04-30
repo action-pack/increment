@@ -36,7 +36,11 @@ function get_() {
     return '/orgs/' + owner;
   }
   else {
-    return '/repos/' + owner + '/' + repository;
+    if(repository.includes("/"))
+    {
+      return '/repos/' + owner + '/' + repository;
+    }
+    return '/repos/' + repository;
   }
 
 }
