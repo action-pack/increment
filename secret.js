@@ -97,7 +97,7 @@ const boostrap = async () => {
     {
       throw new Error("Wrong response: " + response.status)
     }
-
+    console.log("Her1")
   }catch (e) {
     core.setFailed(e.message);
   }
@@ -107,6 +107,7 @@ boostrap()
   .then(
     result => {
       // eslint-disable-next-line no-console
+      console.log("Her2")
       console.log(result);
     },
     err => {
@@ -115,5 +116,6 @@ boostrap()
     }
   )
   .then(() => {
+    console.log("Her3")
     process.exit();
   });
