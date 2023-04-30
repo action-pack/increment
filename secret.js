@@ -91,13 +91,11 @@ const boostrap = async () => {
     const response = await setSecret(data)
 
     if(response.status === 204){
-      console.log("Succesfully updated secret..")
+      return "Succesfully updated secret.."
     }
-    else
-    {
-      throw new Error("Wrong response: " + response.status)
-    }
-    console.log("Her1")
+    
+    throw new Error("Wrong response: " + response.status)
+
   }catch (e) {
     core.setFailed(e.message);
   }
@@ -107,8 +105,9 @@ boostrap()
   .then(
     result => {
       // eslint-disable-next-line no-console
-      console.log("Her2")
-      console.log(result);
+      if(result != null) {
+        console.log(result);
+      }
     },
     err => {
       // eslint-disable-next-line no-console
@@ -116,6 +115,5 @@ boostrap()
     }
   )
   .then(() => {
-    console.log("Her3")
     process.exit();
   });
