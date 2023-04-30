@@ -80,7 +80,7 @@ const existVariable = (varname) => {
   repo: repository,
   name: varname } )
  
-  console.log(response.status)
+  console.log(response)
 
   return false
 }
