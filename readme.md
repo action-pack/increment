@@ -28,5 +28,6 @@ uses: kroese/set-secret@v1
 with:
   name: 'MY_SECRET_NAME'
   value: 'Lorem ipsun dolor simit'
+  repository: ${{ github.repository }}
   token: ${{ secrets.REPO_ACCESS_TOKEN }}
 ```
