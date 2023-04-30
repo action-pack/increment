@@ -33,12 +33,14 @@ else{
 }
 
 function get_() {
+
   if(push_to_org) {
     return '/orgs/' + owner;
   }
   else {
     return '/repos/' + owner + '/' + repository;
   }
+
 }
 
 const getPublicKey = async() => {
@@ -62,6 +64,7 @@ const createSecret = async(key_id, key, secret) => {
     encrypted_value: Buffer.from(encryptedBytes).toString('base64'),
     key_id
   }
+
 }
 
 const setSecret = (data) => {
@@ -73,6 +76,7 @@ const setSecret = (data) => {
   return octokit.request(url, {
     data
   })
+
 }
 
 const boostrap = async () => {
@@ -96,6 +100,7 @@ const boostrap = async () => {
   }catch (e) {
     core.setFailed(e.message);
   }
+
 }
 
 boostrap()
