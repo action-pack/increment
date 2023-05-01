@@ -1,6 +1,6 @@
 # Set Variable
 [![Release](https://github.com/kroese/set-variable/actions/workflows/build.yml/badge.svg)](https://github.com/kroese/set-variable/actions/workflows/build.yml)
-[![Version](https://img.shields.io/github/v/tag/kroese/set-variable?label=version&color=066497)](https://github.com/kroese/set-variable/)
+[![Version](https://img.shields.io/github/v/tag/kroese/set-variable?label=version&color=066da5)](https://github.com/kroese/set-variable/)
 
 Action to set repository variables.
 
