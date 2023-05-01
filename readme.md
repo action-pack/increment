@@ -1,5 +1,5 @@
 # Set Variable
-[![Release](https://github.com/kroese/set-variable/actions/workflows/build.yml/badge.svg)](https://github.com/kroese/set-variable/actions/workflows/build.yml)
+[![Build](https://github.com/kroese/set-variable/actions/workflows/build.yml/badge.svg)](https://github.com/kroese/set-variable/actions/workflows/build.yml)
 [![Version](https://img.shields.io/github/v/tag/kroese/set-variable?label=version&color=066da5)](https://github.com/kroese/set-variable/)
 [![Size](https://img.shields.io/github/size/kroese/set-variable/dist/index.js?branch=release/v3&label=size&color=066da5)](https://github.com/kroese/set-variable/)
 
