@@ -46,25 +46,24 @@ jobs:
           node-version: 16
       - run: |
           npm i -g @vercel/ncc
-          npm install --save-dev webpack-bundle-analyzer
+          #npm install --save-dev webpack-bundle-analyzer
           npm install --production
           npm run build
-          npm exec --yes -- webpack-bundle-analyzer dist/stats dist -O -m static
+          #npm exec --yes -- webpack-bundle-analyzer dist/stats dist -O -m static
       - name: Clean files
         run: |
           rm .gitignore
           rm -Rf node_modules/
           rm -Rf .github
           rm index.js
-          rm dist/stats
-          rm dist/index.js.map
-          rm dist/sourcemap-register.js
+          rm -f dist/stats
+          rm -f dist/index.js.map
+          rm -f dist/sourcemap-register.js
       - name: Git Create Branch release/v${{ vars.MINOR }} 
         run: |
           git add .
           git commit -m "Auto commit from Github Actions #${{ github.run_id }}"
           git push origin release/v${{ vars.MINOR }} -f
-          gitx
 
   release:
     name: Release
