@@ -1,11 +1,12 @@
 {
   "name": "set-variable",
-  "version": "5",
+  "version": "4",
   "license": "MIT License",
   "repository": "https://github.com/kroese/set-variable",
   "scripts": {
     "lint": "eslint . --fix",
-    "build": "ncc build index.js -m -s --stats-out dist/stats -e tr46 -o dist"
+    "build": "ncc build index.js -m -e tr46 -o dist"
+    "build_stats": "ncc build index.js -m -s --stats-out dist/stats -e tr46 -o dist"
   },
   "dependencies": {
     "@actions/core": "^1.9.1",
@@ -13,7 +14,6 @@
     "@octokit/rest": "^19.0.7"
   },
   "devDependencies": {
-    "webpack-bundle-analyzer": "^4.8.0",
     "eslint-config-strongloop": "^2.1.0",
     "eslint-plugin-jsdoc": "^43.0.0",
     "husky": "^8.0.0",
