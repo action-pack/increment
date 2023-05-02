@@ -5,7 +5,7 @@
   "repository": "https://github.com/kroese/set-variable",
   "scripts": {
     "lint": "eslint . --fix",
-    "build": "ncc build index.js -m -s --stats-out dist/stats -e whatwg-url -o dist"
+    "build": "ncc build index.js -m -s --stats-out dist/stats -e tr46 -o dist"
   },
   "dependencies": {
     "@actions/core": "^1.9.1",
