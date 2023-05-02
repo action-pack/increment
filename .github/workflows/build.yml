@@ -45,6 +45,7 @@ jobs:
         with:
           node-version: 16
       - run: |
+          rm -f package-lock.json
           npm i -g @vercel/ncc
           npm install --production
           npm run build
