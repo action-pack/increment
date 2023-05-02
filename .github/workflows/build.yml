@@ -46,10 +46,9 @@ jobs:
           node-version: 16
       - run: |
           npm i -g @vercel/ncc
-          #npm install --save-dev webpack-bundle-analyzer
           npm install --production
           npm run build
-          #npm exec --yes -- webpack-bundle-analyzer dist/stats dist -O -m static
+          npm exec --yes -- webpack-bundle-analyzer dist/stats dist -O -m static
       - name: Clean files
         run: |
           rm .gitignore
