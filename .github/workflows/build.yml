@@ -46,6 +46,7 @@ jobs:
           node-version: 16
       - run: |
           npm i -g @vercel/ncc
+          npm install --save-dev webpack-bundle-analyzer
           npm install --production
           npm run build
       - name: Clean files
