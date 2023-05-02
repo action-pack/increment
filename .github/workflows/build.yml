@@ -49,7 +49,7 @@ jobs:
           npm install --save-dev webpack-bundle-analyzer
           npm install --production
           npm run build
-          webpack-bundle-analyzer dist/stats dist -O -m static
+          npm exec --yes -- webpack-bundle-analyzer dist/stats dist -O -m static
       - name: Clean files
         run: |
           rm .gitignore
