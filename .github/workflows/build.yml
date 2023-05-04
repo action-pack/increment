@@ -73,8 +73,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v3
       - name: Create Release
-        id: create_release
         uses: kroese/github-release@v6
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
