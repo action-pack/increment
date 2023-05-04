@@ -101,7 +101,7 @@ const boostrap = async () => {
     exists = (response.status === 200) 
 
     if(exists) {
-      old_value = response.data
+      old_value = response.data.value
     }
 
   } catch (e) {
@@ -112,11 +112,11 @@ const boostrap = async () => {
     
     if(exists) {
 
-       let new_value = increment(value)
+       let new_value = increment(old_value)
        const response = await setVariable(new_value)
        
        if(response.status === 204) {
-          return "Succesfully incremented variable from " + old_value + " to " + new_value
+          return "Succesfully incremented " + name + " from " + old_value + " to " + new_value
        }
       
       throw new Error("ERROR: Wrong status was returned: " + response.status)
@@ -128,7 +128,7 @@ const boostrap = async () => {
       const response = await createVariable("1")
       
       if(response.status === 201) {
-          return "Succesfully created variable.."
+          return "Succesfully created variable " + name
        }
       
       throw new Error("ERROR: Wrong status was returned: " + response.status)
