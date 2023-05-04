@@ -1,8 +1,8 @@
 {
-  "name": "set-variable",
-  "version": "5",
+  "name": "increment",
+  "version": "1",
   "license": "MIT License",
-  "repository": "https://github.com/kroese/set-variable",
+  "repository": "https://github.com/kroese/increment",
   "scripts": {
     "lint": "eslint . --fix",
     "build": "ncc build index.js -m -o dist",
