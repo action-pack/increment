@@ -13,7 +13,6 @@ on:
       - 'package.json'
       - 'package-lock.json'
 
-
 jobs:
   test:
     name: Test
@@ -84,12 +83,8 @@ jobs:
           body: "Release v${{ vars.MINOR }}"
           commit: "release/v${{ vars.MINOR }}"
       -
-        name: Increment minor version
-        run: echo "NEW_MINOR=$((${{ vars.MINOR }}+1))" >> $GITHUB_ENV
-      -
-        name: Update minor version variable
-        uses: kroese/set-variable@v3
+        name: Increment minor version variable
+        uses: kroese/increment@v1
         with:
           name: 'MINOR'
-          value: ${{ env.NEW_MINOR }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
