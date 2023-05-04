@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/github/v/tag/kroese/increment?label=version&color=066da5)](https://github.com/kroese/increment/)
 [![Size](https://img.shields.io/github/size/kroese/increment/dist/index.js?branch=release/v1&label=size&color=066da5)](https://github.com/kroese/increment/)
 
-Action to increment a repository variable.
+Action to increment a repository variable. Useful for increasing a version number for example.
 
 ## Usage
 
