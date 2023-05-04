@@ -104,7 +104,7 @@ const boostrap = async () => {
           return "Succesfully updated variable.."
        }
       
-      throw new Error("Wrong status: " + response.status)
+      throw new Error("Wrong status was returned: " + response.status)
       
     }
     else
@@ -116,7 +116,7 @@ const boostrap = async () => {
           return "Succesfully created variable.."
        }
       
-      throw new Error("Wrong status: " + response.status)
+      throw new Error("Wrong status was returned: " + response.status)
     }
 
   }catch (e) {
