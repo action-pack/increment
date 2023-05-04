@@ -1,20 +1,16 @@
-name: 'Set Repository Variable'
+name: 'Increment variable'
 
 author: kroese
 
-description: 'Action to set repository variables'
+description: 'Action to increment a repository variable'
 
 branding:
-  icon: arrow-right
+  icon: arrow-up
   color: "gray-dark"
 
 inputs:
   name:
     description: Name
-    required: true
-
-  value:
-    description: Value
     required: true
 
   repository:
