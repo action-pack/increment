@@ -2,7 +2,7 @@ name: 'Increment variable'
 
 author: kroese
 
-description: 'Action to increment a repository variable.'
+description: 'Action to increment a repository variable'
 
 branding:
   icon: arrow-up
