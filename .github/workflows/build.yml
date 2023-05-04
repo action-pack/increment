@@ -81,8 +81,8 @@ jobs:
         with:
           tag: "v${{ vars.MINOR }}"
           title: "v${{ vars.MINOR }}"
-          commit: "release/v${{ vars.MINOR }}"
           body: "Release v${{ vars.MINOR }}"
+          commit: "release/v${{ vars.MINOR }}"
       -
         name: Increment minor version
         run: echo "NEW_MINOR=$((${{ vars.MINOR }}+1))" >> $GITHUB_ENV
