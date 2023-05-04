@@ -1,17 +1,16 @@
-# Set Variable
-[![Build](https://github.com/kroese/set-variable/actions/workflows/build.yml/badge.svg)](https://github.com/kroese/set-variable/)
-[![Version](https://img.shields.io/github/v/tag/kroese/set-variable?label=version&color=066da5)](https://github.com/kroese/set-variable/)
-[![Size](https://img.shields.io/github/size/kroese/set-variable/dist/index.js?branch=release/v4&label=size&color=066da5)](https://github.com/kroese/set-variable/)
+# Increment Variable
+[![Build](https://github.com/kroese/increment/actions/workflows/build.yml/badge.svg)](https://github.com/kroese/increment/)
+[![Version](https://img.shields.io/github/v/tag/kroese/increment?label=version&color=066da5)](https://github.com/kroese/increment/)
+[![Size](https://img.shields.io/github/size/kroese/increment/dist/index.js?branch=release/v1&label=size&color=066da5)](https://github.com/kroese/increment/)
 
-Action to set repository variables.
+Action to increment a repository variable.
 
 ## Usage
 
 ```YAML
-uses: kroese/set-variable@v4
+uses: kroese/increment@v1
 with:
   name: 'MY_VARIABLE'
-  value: 'Lorem ipsun dolor simit'
   token: ${{ secrets.REPO_ACCESS_TOKEN }}
 ```
 
@@ -20,10 +19,6 @@ with:
 ### name
 
 **Required** `String` Variable name.
-
-### value
-
-**Required** `String` Value to store.
 
 ### token
 
