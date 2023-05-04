@@ -2,7 +2,6 @@ const github = require("@actions/github");
 const core = require("@actions/core");
 
 const name = core.getInput("name");
-const value = core.getInput("value");
 const token = core.getInput("token");
 
 const { Octokit } = require("@octokit/action");
@@ -37,6 +36,19 @@ function get_() {
     return '/repos/' + owner + '/' + repository;
   }
 
+}
+
+function increment_alphanumeric_str(str) {
+
+    var numeric = str.match(/\d+$/)[0];
+    var prefix = str.split(numeric)[0];
+
+    function increment_string_num(str){
+        var inc = String(parseInt(str)+1);
+        return str.slice(0, str.length-inc.length)+inc;
+    }
+
+    return prefix+increment_string_num(numeric);
 }
 
 const createVariable = (data) => {
@@ -83,12 +95,17 @@ const getVariable = (varname) => {
 const boostrap = async () => {
   
   let exists = false
-  
+  let old_value = ""
+
   try {
     
     const response = await getVariable(name)
   
     exists = (response.status === 200) 
+
+    if(exists) {
+      old_value = response.data.value
+    }
 
   } catch (e) {
     // Variable does not exist
@@ -97,11 +114,12 @@ const boostrap = async () => {
   try {
     
     if(exists) {
-       
-       const response = await setVariable(value)
+
+       let new_value = increment_alphanumeric_str(value)
+       const response = await setVariable(new_value)
        
        if(response.status === 204) {
-          return "Succesfully updated variable.."
+          return "Succesfully incremented variable from " + old_value + " to " + new_value
        }
       
       throw new Error("ERROR: Wrong status was returned: " + response.status)
@@ -110,7 +128,7 @@ const boostrap = async () => {
     else
     {
       
-      const response = await createVariable(value)
+      const response = await createVariable("1")
       
       if(response.status === 201) {
           return "Succesfully created variable.."
