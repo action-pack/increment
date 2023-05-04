@@ -42,7 +42,7 @@ function increment(str) {
 
     let numeric = str.match(/\d+$/)[0]
     let prefix = str.split(numeric)[0]
-    let inc = String(parseInt(numeric)+1)
+    let inc = String(parseInt(numeric, 10)+1)
 
     return prefix+str.slice(0, numeric.length-inc.length)+inc
 
@@ -101,7 +101,7 @@ const boostrap = async () => {
     exists = (response.status === 200) 
 
     if(exists) {
-      old_value = response.data.value
+      old_value = response.data
     }
 
   } catch (e) {
