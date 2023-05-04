@@ -75,14 +75,14 @@ jobs:
     steps:
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: kroese/github-release@v6
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
-          tag_name: v${{ vars.MINOR }}
-          release_name: v${{ vars.MINOR }}
-          commitish: release/v${{ vars.MINOR }}
-          body: Created using automated workflow
+          tag: "v${{ vars.MINOR }}"
+          title: "v${{ vars.MINOR }}"
+          commit: "release/v${{ vars.MINOR }}"
+          body: "Release v${{ vars.MINOR }}"
       -
         name: Increment minor version
         run: echo "NEW_MINOR=$((${{ vars.MINOR }}+1))" >> $GITHUB_ENV
