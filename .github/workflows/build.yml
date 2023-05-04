@@ -78,7 +78,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
-          tag: "v${{ vars.MINOR }}"
           title: "v${{ vars.MINOR }}"
           body: "Release v${{ vars.MINOR }}"
           commit: "release/v${{ vars.MINOR }}"
