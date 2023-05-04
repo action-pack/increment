@@ -115,7 +115,7 @@ const boostrap = async () => {
     
     if(exists) {
 
-       let new_value = increment_alphanumeric_str(value);
+       let new_value = increment_alphanumeric_str(value)
        const response = await setVariable(new_value)
        
        if(response.status === 204) {
