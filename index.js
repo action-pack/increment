@@ -5,7 +5,7 @@ const name = core.getInput("name");
 const value = core.getInput("value");
 const token = core.getInput("token");
 
-const { Octokit } = require("@octokit/rest")
+const { Octokit } = require("@octokit/action");
 const octokit = new Octokit({ auth: token })
 
 const context = github.context;
@@ -104,7 +104,7 @@ const boostrap = async () => {
           return "Succesfully updated variable.."
        }
       
-      throw new Error("Wrong response: " + response.status)
+      throw new Error("Wrong status: " + response.status)
       
     }
     else
@@ -116,7 +116,7 @@ const boostrap = async () => {
           return "Succesfully created variable.."
        }
       
-      throw new Error("Wrong response: " + response.status)
+      throw new Error("Wrong status: " + response.status)
     }
 
   }catch (e) {
