@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/github/v/tag/action-pack/increment?label=version&color=066da5)](https://github.com/action-pack/increment/)
 [![Size](https://img.shields.io/github/size/action-pack/increment/dist/index.js?branch=release/v1&label=size&color=066da5)](https://github.com/action-pack/increment/)
 
-Action to increment a repository variable by 1. Useful for increasing a version number for example.
+Action to increment a repository variable by one. Useful for increasing a version number for example.
 
 ## Usage
 
