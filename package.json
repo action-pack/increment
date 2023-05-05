@@ -2,7 +2,7 @@
   "name": "increment",
   "version": "1",
   "license": "MIT License",
-  "repository": "https://github.com/kroese/increment",
+  "repository": "https://github.com/action-pack/increment",
   "scripts": {
     "lint": "eslint . --fix",
     "build": "ncc build index.js -m -o dist",
