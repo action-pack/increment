@@ -66,7 +66,7 @@ jobs:
           git commit -m "Auto commit from Github Actions #${{ github.run_id }}"
           git push origin release/v${{ vars.MINOR }} -f
       - name: Create Release
-        uses: kroese/github-release@v6
+        uses: action-pack/github-release@v6
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
@@ -75,7 +75,7 @@ jobs:
           body: "Release v${{ vars.MINOR }}"
       -
         name: Increment minor version variable
-        uses: kroese/increment@v1
+        uses: action-pack/increment@v1
         with:
           name: 'MINOR'
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
