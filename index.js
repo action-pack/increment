@@ -128,7 +128,7 @@ const boostrap = async () => {
       const response = await createVariable("1")
       
       if(response.status === 201) {
-          return "Succesfully created variable " + name
+          return "Succesfully created variable " + name + " with value 1"
        }
       
       throw new Error("ERROR: Wrong status was returned: " + response.status)
