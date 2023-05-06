@@ -12,6 +12,7 @@ on:
       - '.github/workflows/**'
       - 'package.json'
       - 'package-lock.json'
+      - 'action.yml'
 
 jobs:
   test:
