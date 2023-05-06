@@ -17,7 +17,7 @@ inputs:
     required: false
 
   owner:
-    description: Owner of repository
+    description: Repository owner
     default: false
     required: false
 
