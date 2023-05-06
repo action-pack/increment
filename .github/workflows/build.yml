@@ -75,6 +75,7 @@ jobs:
           tag: "v${{ vars.MINOR }}"
           title: "v${{ vars.MINOR }}"
           body: "Release v${{ vars.MINOR }}"
+          commit: "release/v${{ vars.MINOR }}"
       -
         name: Increment minor version variable
         uses: action-pack/increment@v1
