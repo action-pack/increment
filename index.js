@@ -4,7 +4,7 @@ const core = require("@actions/core");
 const name = core.getInput("name");
 const token = core.getInput("token");
 
-const { Octokit } = require("@octokit/action");
+const { Octokit } = require("@octokit/core");
 const octokit = new Octokit({ auth: token })
 
 const context = github.context;
