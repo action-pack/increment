@@ -12,7 +12,6 @@ on:
       - '.github/workflows/**'
       - 'package.json'
       - 'package-lock.json'
-      - 'action.yml'
 
 jobs:
   test:
@@ -44,12 +43,13 @@ jobs:
       - name: Test and Build
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - run: |
           rm -f package-lock.json
           npm i -g @vercel/ncc
           npm install --production
           npm run build
+          #npm run build_stats
           #npm exec --yes -- webpack-bundle-analyzer dist/stats dist -O -m static
       - name: Clean files
         run: |
@@ -59,6 +59,7 @@ jobs:
           rm index.js
           rm -f dist/stats
           rm -f dist/index.js.map
+          rm -f dist/index.873.js.map
           rm -f dist/sourcemap-register.js
       - name: Git Create Branch release/v${{ vars.MINOR }} 
         run: |
