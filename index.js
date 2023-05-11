@@ -47,7 +47,7 @@ function increment(string) {
   var numberLength = number.length
 
   // Increment number by 1
-  number = (parseInt(number) + 1).toString();
+  number = (parseInt(number, 10) + 1).toString();
   
   // If there were leading 0s, add them again
   while (number.length < numberLength) {
