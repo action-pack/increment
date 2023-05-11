@@ -38,14 +38,23 @@ function get_() {
 
 }
 
-function increment(str) {
+function increment(string) {
 
-    let numeric = str.match(/\d+$/)[0]
-    let prefix = str.split(numeric)[0]
-    let inc = String(parseInt(numeric, 10)+1)
+  // Extract string's number
+  var number = string.match(/\d+/) === null ? 0 : string.match(/\d+/)[0];
+  
+  // Store number's length
+  var numberLength = number.length
 
-    return prefix+str.slice(0, numeric.length-inc.length)+inc
-
+  // Increment number by 1
+  number = (parseInt(number) + 1).toString();
+  
+  // If there were leading 0s, add them again
+  while (number.length < numberLength) {
+    number = "0" + number;
+  }
+    
+  return string.replace(/[0-9]/g, '').concat(number);
 }
 
 const createVariable = (data) => {
