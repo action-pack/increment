@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com 
-          git checkout -b release/v${{ vars.MINOR }}
+          git checkout -b release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
       - name: Test and Build
         uses: actions/setup-node@v3
         with:
@@ -63,20 +63,20 @@ jobs:
           rm -f dist/index.js.map
           rm -f dist/index.873.js.map
           rm -f dist/sourcemap-register.js
-      - name: Git Create Branch release/v${{ vars.MINOR }} 
+      - name: Git Create Branch release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
         run: |
           git add .
           git commit -m "Auto commit from Github Actions #${{ github.run_id }}"
-          git push origin release/v${{ vars.MINOR }} -f
+          git push origin release/v${{ vars.MAJOR }}.${{ vars.MINOR }} -f
       - name: Create Release
         uses: action-pack/github-release@v6
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
-          tag: "v${{ vars.MINOR }}"
-          title: "v${{ vars.MINOR }}"
-          body: "Release v${{ vars.MINOR }}"
-          commit: "release/v${{ vars.MINOR }}"
+          tag: "v${{ vars.MAJOR }}.${{ vars.MINOR }}"
+          title: "v${{ vars.MAJOR }}.${{ vars.MINOR }}"
+          body: "Release v${{ vars.MAJOR }}.${{ vars.MINOR }}"
+          commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
       -
         name: Increment minor version variable
         uses: action-pack/increment@v2
