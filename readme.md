@@ -1,6 +1,6 @@
 # Increment Variable
 [![Build](https://github.com/action-pack/increment/actions/workflows/build.yml/badge.svg)](https://github.com/action-pack/increment/)
-[![Version](https://img.shields.io/github/v/tag/action-pack/increment?label=version&color=066da5)](https://github.com/marketplace/actions/increment-variable)
+[![Version](https://img.shields.io/github/v/tag/action-pack/increment?label=version&sort=semver&color=066da5)](https://github.com/marketplace/actions/increment-variable)
 [![Size](https://img.shields.io/github/size/action-pack/increment/dist/index.js?branch=release/v2.0&label=size&color=066da5)](https://github.com/action-pack/increment/)
 
 Action to increment a repository variable by one. Useful for increasing a version number for example.
