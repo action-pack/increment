@@ -79,8 +79,7 @@ jobs:
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
       -
         name: Increment minor version variable
-        uses: action-pack/set-variable@v1.0
+        uses: action-pack/increment@v2.0
         with:
           name: 'MINOR'
-          value: '1'
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
