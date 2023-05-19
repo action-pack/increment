@@ -77,6 +77,15 @@ jobs:
           title: "v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           body: "Release v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
+      - name: Update major release
+        uses: action-pack/github-release@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+        with:
+          tag: "v${{ vars.MAJOR }}"
+          title: "v${{ vars.MAJOR }}"
+          body: "Release v${{ vars.MAJOR }}"
+          commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
       -
         name: Increment minor version variable
         uses: action-pack/increment@v2.0
