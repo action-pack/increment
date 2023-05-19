@@ -69,7 +69,7 @@ jobs:
           git commit -m "Auto commit from Github Actions #${{ github.run_id }}"
           git push origin release/v${{ vars.MAJOR }}.${{ vars.MINOR }} -f
       - name: Create Release
-        uses: action-pack/github-release@v6
+        uses: action-pack/github-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
@@ -78,7 +78,7 @@ jobs:
           body: "Release v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
       - name: Update major release
-        uses: action-pack/github-release@v6
+        uses: action-pack/github-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
