@@ -39,8 +39,8 @@ jobs:
            token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Setup Git
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com 
+          git config user.name kroese
+          git config user.email kroese@users.noreply.github.com
           git checkout -b release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
       - name: Test and Build
         uses: actions/setup-node@v3
