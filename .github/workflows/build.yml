@@ -79,7 +79,7 @@ jobs:
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
       -
         name: Increment minor version variable
-        uses: action-pack/set-variable@v1
+        uses: action-pack/set-variable@v1.0
         with:
           name: 'MINOR'
           value: '1'
