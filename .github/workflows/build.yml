@@ -33,16 +33,20 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout
+      -
+        name: Checkout
         uses: actions/checkout@v3
         with:
+           fetch-depth: 0
            token: ${{ secrets.REPO_ACCESS_TOKEN }}
-      - name: Setup Git
+      -
+        name: Setup Git
         run: |
           git config user.name kroese
           git config user.email kroese@users.noreply.github.com
           git checkout -b release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
-      - name: Test and Build
+      -
+        name: Test and Build
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -53,7 +57,8 @@ jobs:
           npm run build
           #npm run build_stats
           #npm exec --yes -- webpack-bundle-analyzer dist/stats dist -O -m static
-      - name: Clean files
+      -
+        name: Clean files
         run: |
           rm .gitignore
           rm -Rf node_modules/
@@ -63,28 +68,47 @@ jobs:
           rm -f dist/index.js.map
           rm -f dist/index.873.js.map
           rm -f dist/sourcemap-register.js
-      - name: Git Create Branch release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
+      -
+        name: Create Branch release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
         run: |
           git add .
           git commit -m "Auto commit from Github Actions #${{ github.run_id }}"
           git push origin release/v${{ vars.MAJOR }}.${{ vars.MINOR }} -f
-      - name: Create Release
+      -
+        name: Get previous tag
+        id: previousTag
+        run: |
+          name=$(git --no-pager tag --sort=creatordate --merged ${{ github.ref_name }} | tail -2 | head -1)
+          echo "previousTag: $name"
+          echo "previousTag=$name" >> $GITHUB_ENV
+      -
+        name: Generate changelog
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          fromTag: ${{ github.ref_name }}
+          toTag: ${{ env.previousTag }}
+          writeToFile: false
+      -
+        name: Create a release
         uses: action-pack/github-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
           tag: "v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           title: "v${{ vars.MAJOR }}.${{ vars.MINOR }}"
-          body: "Release v${{ vars.MAJOR }}.${{ vars.MINOR }}"
+          body: "${{ steps.changelog.outputs.changes }}"
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
-      - name: Update major release
+      -
+        name: Update major release
         uses: action-pack/github-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
         with:
           tag: "v${{ vars.MAJOR }}"
           title: "v${{ vars.MAJOR }}"
-          body: "Release v${{ vars.MAJOR }}"
+          body: "See v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
       -
         name: Increment version variable
