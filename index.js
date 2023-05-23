@@ -89,7 +89,7 @@ const getVariable = (varname) => {
 
   let url = 'GET '
   url += get_()
-  url += '/actions/variables/' + name
+  url += '/actions/variables/' + varname
   
   return octokit.request(url, {
   owner: owner,
