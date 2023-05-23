@@ -87,8 +87,7 @@ jobs:
           body: "Release v${{ vars.MAJOR }}"
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
       -
-        name: Increment minor version variable
-        uses: action-pack/increment@v2.0
+        name: Increment version variable
+        uses: action-pack/bump@v2
         with:
-          name: 'MINOR'
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
