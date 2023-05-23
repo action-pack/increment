@@ -5,6 +5,8 @@
 
 Action to increment a repository variable by one. Useful for increasing a version number for example.
 
+It also supports alphanumeric variabeles, for example `ABC1` will be increased to `ABC2`.
+
 ## Usage
 
 ```YAML
