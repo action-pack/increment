@@ -3,4 +3,11 @@
     "config:base",
     ":disableDependencyDashboard"
   ]
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["eslint"],
+      "groupName": "eslint",
+      "schedule": ["on the first day of the month"]
+    }
+  ]
 }
