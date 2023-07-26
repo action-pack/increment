@@ -30,6 +30,29 @@ inputs:
     description: Repository access token
     required: true
 
+# runs:
+#   using: node16
+#   main: dist/index.js
+
+# This part is temporary to enable Node 18 support
+
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: composite
+  steps:
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version || '18' }}
+
+    - name: Action
+      run: |
+        node ${{ github.action_path }}/dist/index.js        
+      shell: ${{ (runner.os == 'Windows' && 'pwsh') || 'bash' }}
+      env:
+        INPUT_NAME: ${{ inputs.name }}
+        INPUT_VALUE: ${{ inputs.value }}        
+        INPUT_OWNER: ${{ inputs.owner }}
+        INPUT_ORG: ${{ inputs.org }}
+        INPUT_TOKEN: ${{ inputs.token }}
+        INPUT_REPOSITORY: ${{ inputs.repository }}
