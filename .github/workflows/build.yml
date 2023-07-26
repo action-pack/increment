@@ -39,7 +39,21 @@ jobs:
         with:
            fetch-depth: 0
            token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
       -
+        name: Generate changelog
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          fromTag: ${{ github.ref_name }}
+          toTag: ${{ vars.TAG }}
+          writeToFile: false
+          reverseOrder: true
+          includeInvalidCommits: true
+          excludeTypes: "docs,build,chore"
+      -
+
         name: Setup Git
         run: |
           git config user.name kroese
@@ -68,31 +82,13 @@ jobs:
           rm -f dist/index.js.map
           rm -f dist/index.873.js.map
           rm -f dist/sourcemap-register.js
+
       -
         name: Create Branch release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
         run: |
           git add .
           git commit -m "Auto commit from Github Actions #${{ github.run_id }}"
           git push origin release/v${{ vars.MAJOR }}.${{ vars.MINOR }} -f
-      -
-        name: Get previous tag
-        id: previousTag
-        run: |
-          name=$(git --no-pager tag --sort=creatordate --merged ${{ github.ref_name }} | tail -1)
-          echo "previousTag: $name"
-          echo "previousTag=$name" >> $GITHUB_ENV
-      -
-        name: Generate changelog
-        id: changelog
-        uses: requarks/changelog-action@v1
-        with:
-          token: ${{ github.token }}
-          fromTag: ${{ github.ref_name }}
-          toTag: ${{ env.previousTag }}
-          writeToFile: false
-          reverseOrder: true
-          includeInvalidCommits: true
-          excludeTypes: "docs,build,chore"
       -
         name: Create a release
         uses: action-pack/github-release@v2
@@ -116,6 +112,13 @@ jobs:
           title: "v${{ vars.MAJOR }}"
           body: "See https://github.com/${{ github.repository }}/releases/tag/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
+      -
+        name: Store tag
+        uses: action-pack/set-variable@v1
+        with:
+          name: 'TAG'
+          value: 'v${{ vars.MAJOR }}.${{ vars.MINOR }}'
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
       -
         name: Increment version variable
         uses: action-pack/bump@v2
