@@ -60,11 +60,13 @@ jobs:
           git config user.email kroese@users.noreply.github.com
           git checkout -b release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
       -
-        name: Test and Build
+        name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: |
+      -
+         name: Build
+         run: |
           rm -f package-lock.json
           npm i -g @vercel/ncc
           npm install --omit=dev
