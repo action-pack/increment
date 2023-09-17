@@ -20,7 +20,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+    - uses: actions/checkout@v4
       with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
     - run: npm install
@@ -35,11 +35,10 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+        uses: actions/checkout@v4
         with:
            fetch-depth: 0
            token: ${{ secrets.REPO_ACCESS_TOKEN }}
-
       -
         name: Generate changelog
         id: changelog
@@ -53,7 +52,6 @@ jobs:
           includeInvalidCommits: true
           excludeTypes: "docs,build,chore"
       -
-
         name: Setup Git
         run: |
           git config user.name kroese
@@ -84,7 +82,6 @@ jobs:
           rm -f dist/index.js.map
           rm -f dist/index.873.js.map
           rm -f dist/sourcemap-register.js
-
       -
         name: Create Branch release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
         run: |
