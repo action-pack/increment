@@ -13,10 +13,10 @@
     "@actions/github": "^5.1.1"
   },
   "devDependencies": {
-    "eslint-config-strongloop": "^2.1.0",
-    "eslint-plugin-jsdoc": "^46.8.1",
     "husky": "^8.0.0",
-    "lint-staged": "^14.0.0"
+    "lint-staged": "^14.0.0",
+    "eslint-plugin-jsdoc": "^46.8.1",
+    "eslint-config-strongloop": "^2.1.0"
   },
   "overrides": {
     "@octokit/core": "^5.0.0"
