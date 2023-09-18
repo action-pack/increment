@@ -65,7 +65,7 @@ jobs:
       -
          name: Build
          run: |
-          rm -f package-lock.json
+          #rm -f package-lock.json
           npm i -g @vercel/ncc
           npm install --omit=dev
           npm run build
