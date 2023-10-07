@@ -1,5 +1,6 @@
 {
   "name": "increment",
+  "private": true,  
   "version": "0.0.0-development",
   "license": "MIT License",
   "repository": "https://github.com/action-pack/increment",
