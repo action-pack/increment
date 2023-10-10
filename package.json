@@ -19,9 +19,6 @@
     "eslint-plugin-jsdoc": "^46.8.2",
     "eslint-config-strongloop": "^2.1.0"
   },
-  "overrides": {
-    "@octokit/core": "^5.0.0"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
