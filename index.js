@@ -21,7 +21,7 @@ function get_() {
 
   if (push_to_org) return "/orgs/" + owner;
   if (repository.includes("/")) return "/repos/" + repository;
-  
+
   return "/repos/" + owner + "/" + repository;
 
 }
@@ -92,20 +92,20 @@ const bootstrap = async () => {
   let old_value = "";
 
   try {
-  
+
     const response = await getVariable(name);
 
     exists = response.status === 200;
     if (exists) old_value = response.data.value;
-  
+
   } catch (e) {
     // Variable does not exist
   }
 
   try {
-  
+
     if (exists) {
-    
+
       let new_value = increment(old_value);
       const response = await setVariable(new_value);
 
@@ -114,9 +114,9 @@ const bootstrap = async () => {
       }
 
       throw new Error("ERROR: Wrong status was returned: " + response.status);
-    
+
     } else {
-    
+
       const response = await createVariable("1");
 
       if (response.status === 201) {
@@ -125,7 +125,7 @@ const bootstrap = async () => {
 
       throw new Error("ERROR: Wrong status was returned: " + response.status);
     }
-  
+
   } catch (e) {
     core.setFailed(get_() + ": " + e.message);
     console.error(e);
