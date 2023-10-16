@@ -10,27 +10,19 @@ const repoName = context.payload.repository.name;
 const ownerName = context.payload.repository.owner.login;
 
 let repository = core.getInput("repository");
-if (repository === "false") {
-  repository = repoName;
-}
+if (repository === "false") repository = repoName;
 
 let owner = core.getInput("owner");
-if (owner === "false") {
-  owner = ownerName;
-}
+if (owner === "false") owner = ownerName;
 
 const push_to_org = core.getInput("org") !== "false";
 
 function get_() {
 
-  if (push_to_org) {
-    return "/orgs/" + owner;
-  } else {
-    if (repository.includes("/")) {
-      return "/repos/" + repository;
-    }
-    return "/repos/" + owner + "/" + repository;
-  }
+  if (push_to_org) return "/orgs/" + owner;
+  if (repository.includes("/")) return "/repos/" + repository;
+  
+  return "/repos/" + owner + "/" + repository;
 
 }
 
@@ -104,10 +96,7 @@ const bootstrap = async () => {
     const response = await getVariable(name);
 
     exists = response.status === 200;
-
-    if (exists) {
-      old_value = response.data.value;
-    }
+    if (exists) old_value = response.data.value;
   
   } catch (e) {
     // Variable does not exist
