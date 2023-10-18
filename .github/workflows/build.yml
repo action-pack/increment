@@ -97,7 +97,6 @@ jobs:
         with:
           tag: "v${{ vars.MAJOR }}"
           title: "v${{ vars.MAJOR }}"
-          body: "See https://github.com/${{ github.repository }}/releases/tag/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
       -
         name: Store tag
