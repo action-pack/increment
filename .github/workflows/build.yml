@@ -47,7 +47,7 @@ jobs:
           git checkout -b release/v${{ vars.MAJOR }}.${{ vars.MINOR }}
       -
         name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
       -
