@@ -5,7 +5,7 @@
   "license": "MIT License",
   "repository": "https://github.com/action-pack/increment",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint index.js",
     "build": "ncc build index.js -o dist",
     "build_stats": "ncc build index.js -s --stats-out dist/stats -o dist"
   },
