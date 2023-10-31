@@ -20,7 +20,7 @@
     "eslint-config-strongloop": "^2.1.0"
   },
   "overrides": {
-    "@octokit/core": "^5.0.0",
+    "@octokit/core": "^5.0.1",
     "@actions/http-client": "2.1.1"
   },
   "husky": {
