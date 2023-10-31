@@ -17,7 +17,7 @@ if (owner === "false") owner = ownerName;
 
 const push_to_org = core.getInput("org") !== "false";
 
-function get_() {
+function path_() {
 
   if (push_to_org) return "/orgs/" + owner;
   if (repository.includes("/")) return "/repos/" + repository;
@@ -47,8 +47,7 @@ function increment(string) {
 
 const createVariable = (data) => {
 
-  let url = "POST ";
-  url += get_();
+  let url = "POST " + path_();
   url += "/actions/variables";
 
   return octokit.request(url, {
@@ -61,8 +60,7 @@ const createVariable = (data) => {
 
 const setVariable = (data) => {
 
-  let url = "PATCH ";
-  url += get_();
+  let url = "PATCH " + path_();
   url += "/actions/variables/" + name;
 
   return octokit.request(url, {
@@ -75,8 +73,7 @@ const setVariable = (data) => {
 
 const getVariable = (varname) => {
 
-  let url = "GET ";
-  url += get_();
+  let url = "GET " + path_();
   url += "/actions/variables/" + varname;
 
   return octokit.request(url, {
@@ -127,7 +124,7 @@ const bootstrap = async () => {
     }
 
   } catch (e) {
-    core.setFailed(get_() + ": " + e.message);
+    core.setFailed(path_() + ": " + e.message);
     console.error(e);
   }
 };
