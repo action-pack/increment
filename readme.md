@@ -3,15 +3,17 @@
   
   [![Build](https://github.com/action-pack/increment/actions/workflows/build.yml/badge.svg)](https://github.com/action-pack/increment/)
   [![Version](https://img.shields.io/github/v/tag/action-pack/increment?label=version&sort=semver&color=066da5)](https://github.com/marketplace/actions/increment-variable)
-  [![Size](https://img.shields.io/github/size/action-pack/increment/dist/index.js?branch=release/v2.06&label=size&color=066da5)](https://github.com/action-pack/increment/)
+  [![Size](https://img.shields.io/github/size/action-pack/increment/dist/index.js?branch=release/v2.07&label=size&color=066da5)](https://github.com/action-pack/increment/)
   
 </div></h1>
 
-Action to increment a repository variable by one. Useful for increasing a version number for example.
+Action to increment a repository variable. Useful for increasing a version number for example.
 
 It also supports alphanumeric variables, for example `ABC1` will be increased to `ABC2`.
 
-If the target variable does not exist, it will be automaticly created with a value of `1`.
+If the target variable does not exist, it will be automaticly created.
+
+If you want to increment by another amount than the default (1), you can set the ```amount``` parameter.
 
 ## Usage
 
@@ -27,6 +29,10 @@ with:
 ### name
 
 **Required** `String` Variable name.
+
+### amount
+
+**Optional** `Integer` Increment by this amount (default = 1).
 
 ### token
 

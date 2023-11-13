@@ -15,6 +15,9 @@ if (repository === "false") repository = repoName;
 let owner = core.getInput("owner");
 if (owner === "false") owner = ownerName;
 
+let amount = core.getInput("amount");
+if (amount === "false") amount = "1";
+
 const push_to_org = core.getInput("org") !== "false";
 
 function path_() {
@@ -26,7 +29,7 @@ function path_() {
 
 }
 
-function increment(string) {
+function increment(string, amount) {
 
   // Extract string's number
   var number = string.match(/\d+/) === null ? 0 : string.match(/\d+/)[0];
@@ -34,8 +37,8 @@ function increment(string) {
   // Store number's length
   var numberLength = number.length;
 
-  // Increment number by 1
-  number = (parseInt(number, 10) + 1).toString();
+  // Increment number by the amount
+  number = (parseInt(number, 10) + parseInt(amount, 10)).toString();
 
   // If there were leading 0s, add them again
   while (number.length < numberLength) {
@@ -103,7 +106,7 @@ const bootstrap = async () => {
 
     if (exists) {
 
-      let new_value = increment(old_value);
+      let new_value = increment(old_value, amount);
       const response = await setVariable(new_value);
 
       if (response.status === 204) {
@@ -114,10 +117,10 @@ const bootstrap = async () => {
 
     } else {
 
-      const response = await createVariable("1");
+      const response = await createVariable(amount);
 
       if (response.status === 201) {
-        return "Succesfully created variable " + name + " with value 1.";
+        return "Succesfully created variable " + name + " with value " + amount + ".";
       }
 
       throw new Error("ERROR: Wrong status was returned: " + response.status);
