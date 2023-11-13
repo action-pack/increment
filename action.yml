@@ -1,6 +1,6 @@
 name: "Increment variable"
 author: "action-pack"
-description: "Action to increment a repository variable by one. Useful for increasing a version number for example."
+description: "Action to increment a repository variable. Useful for increasing a version number for example."
 
 branding:
   icon: "plus"
@@ -10,6 +10,11 @@ inputs:
   name:
     description: Name
     required: true
+
+  amount:
+    description: Amount
+    default: 1
+    required: false
 
   repository:
     description: Repository name
