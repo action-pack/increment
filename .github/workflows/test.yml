@@ -9,22 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Test 1
+        name: Test increment
         uses: action-pack/increment@v2
         with:
           name: 'TEST'
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
       -
-        name: Test 2
+        name: Test increment by 2
         uses: action-pack/increment@v2
         with:
           name: 'TEST'
           amount: 2
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
       -
-        name: Test 3
+        name: Test decrement by 2
         uses: action-pack/increment@v2
         with:
           name: 'TEST'
-          amount: "3"
+          amount: -2
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
