@@ -1,24 +1,13 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 
-const name = core.getInput("name");
 const token = core.getInput("token");
 const octokit = github.getOctokit(token);
 
-const context = github.context;
-const repoName = context.payload.repository.name;
-const ownerName = context.payload.repository.owner.login;
-
-let amount = core.getInput("amount");
-if (amount === "" || amount === "0") amount = "1";
-
-let owner = core.getInput("owner");
-if (owner === "" || owner === "false") owner = ownerName;
-
-let repository = core.getInput("repository");
-if (repository === "" || repository === "false") repository = repoName;
-
-const push_to_org = core.getInput("org") !== "" && core.getInput("org") !== "false";
+const amount = input("amount", "1");
+const push_to_org = (input("org", "") !== "");
+const owner = input("owner", github.context.payload.repository.owner.login);
+const repository = input("repository", github.context.payload.repository.name);
 
 function path_() {
 
@@ -26,6 +15,15 @@ function path_() {
   if (repository.includes("/")) return "/repos/" + repository;
 
   return "/repos/" + owner + "/" + repository;
+
+}
+
+function input(name, def) {
+
+  let inp = core.getInput(name).trim();
+  if (inp === "" || inp.toLowerCase() === "false") return def;
+
+  return inp;
 
 }
 
@@ -113,9 +111,13 @@ const bootstrap = async () => {
       const response = await setVariable(new_value);
 
       if (response.status === 204) {
+        if (parseInt(amount, 10) === 0) {
+          return ("Amount was set to zero, value stays at " + old_value + ".");
+        }
         if (parseInt(amount, 10) < 0) {
           return ("Succesfully decremented " + name + " from " + old_value + " to " + new_value + ".");
-        } else {
+        }
+        if (parseInt(amount, 10) > 0) {
           return ("Succesfully incremented " + name + " from " + old_value + " to " + new_value + ".");
         }
       }
