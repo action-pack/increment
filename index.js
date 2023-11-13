@@ -37,12 +37,12 @@ function increment(string, amount) {
   // Store number's length
   var numberLength = number.length;
   var leadingZeroes = number.startsWith("0");
-  
+
   // Increment number by the amount
   number = (parseInt(number, 10) + parseInt(amount, 10)).toString();
 
   // If there were leading 0s, add them again
-  if(leadingZeroes) {
+  if (leadingZeroes) {
     while (number.length < numberLength) {
       number = "0" + number;
     }
