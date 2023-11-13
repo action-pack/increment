@@ -18,7 +18,7 @@ if (owner === "" || owner === "false") owner = ownerName;
 let repository = core.getInput("repository");
 if (repository === "" || repository === "false") repository = repoName;
 
-const push_to_org = core.getInput("org") !== "false";
+const push_to_org = core.getInput("org") !== "" && core.getInput("org") !== "false";
 
 function path_() {
 
