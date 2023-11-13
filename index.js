@@ -4,6 +4,7 @@ const github = require("@actions/github");
 const token = core.getInput("token");
 const octokit = github.getOctokit(token);
 
+const name = input("name", "1");
 const amount = input("amount", "1");
 const push_to_org = (input("org", "") !== "");
 const owner = input("owner", github.context.payload.repository.owner.login);
@@ -104,6 +105,10 @@ const bootstrap = async () => {
   }
 
   try {
+
+    if (name === "") {
+      throw new Error("No name was specified!");
+    }
 
     if (exists) {
 
