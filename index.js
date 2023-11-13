@@ -9,14 +9,14 @@ const context = github.context;
 const repoName = context.payload.repository.name;
 const ownerName = context.payload.repository.owner.login;
 
-let repository = core.getInput("repository");
-if (repository === "false") repository = repoName;
+let amount = core.getInput("amount");
+if (amount === "" || amount === "0") amount = "1";
 
 let owner = core.getInput("owner");
-if (owner === "false") owner = ownerName;
+if (owner === "" || owner === "false") owner = ownerName;
 
-let amount = core.getInput("amount");
-if (amount === "false") amount = "1";
+let repository = core.getInput("repository");
+if (repository === "" || repository === "false") repository = repoName;
 
 const push_to_org = core.getInput("org") !== "false";
 
@@ -36,13 +36,16 @@ function increment(string, amount) {
 
   // Store number's length
   var numberLength = number.length;
-
+  var leadingZeroes = number.startsWith("0");
+  
   // Increment number by the amount
   number = (parseInt(number, 10) + parseInt(amount, 10)).toString();
 
   // If there were leading 0s, add them again
-  while (number.length < numberLength) {
-    number = "0" + number;
+  if(leadingZeroes) {
+    while (number.length < numberLength) {
+      number = "0" + number;
+    }
   }
 
   return string.replace(/[0-9]/g, "").concat(number);
@@ -110,7 +113,11 @@ const bootstrap = async () => {
       const response = await setVariable(new_value);
 
       if (response.status === 204) {
-        return ("Succesfully incremented " + name + " from " + old_value + " to " + new_value + ".");
+        if (parseInt(amount, 10) < 0) {
+          return ("Succesfully decremented " + name + " from " + old_value + " to " + new_value + ".");
+        } else {
+          return ("Succesfully incremented " + name + " from " + old_value + " to " + new_value + ".");
+        }
       }
 
       throw new Error("ERROR: Wrong status was returned: " + response.status);
