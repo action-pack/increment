@@ -12,11 +12,14 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
       with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-    - run: npm install
-    - run: npm run lint
+    - name: Perform linting
+      run: |
+        npm install
+        npm run lint
   
   build:
     needs: test
