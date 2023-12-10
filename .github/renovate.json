@@ -1,6 +1,7 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
     ":disableDependencyDashboard"
   ],
   "packageRules": [
@@ -9,5 +10,6 @@
       "groupName": "eslint",
       "schedule": ["on the first day of the month"]
     }
-  ]
+  ],
+  "forkProcessing": "enabled"
 }
