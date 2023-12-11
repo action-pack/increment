@@ -70,7 +70,7 @@ jobs:
         name: Clean files
         run: |
           rm .gitignore
-          rm renovate.json
+          rm -f renovate.json
           rm -Rf node_modules/
           rm -Rf .github
           rm index.js
