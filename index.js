@@ -38,7 +38,7 @@ function increment(string, amount) {
   numbers[lastNumberIndex] = (lastNumber + parseInt(amount, 10)).toString();
 
   // Reconstruct the string with incremented numbers and leading zeroes
-  var result = string.replace(/\d+/g, function (match) {
+  var result = string.replace(/\d+/g, function(match) {
     var currentNumber = numbers.shift();
     if (match.startsWith("0")) {
       while (currentNumber.length < match.length) {
@@ -60,7 +60,7 @@ const createVariable = (data) => {
     owner: owner,
     repo: repository,
     name: name,
-    value: data,
+    value: data
   });
 };
 
@@ -73,7 +73,7 @@ const setVariable = (data) => {
     owner: owner,
     repo: repository,
     name: name,
-    value: data,
+    value: data
   });
 };
 
@@ -85,7 +85,7 @@ const getVariable = (varname) => {
   return octokit.request(url, {
     owner: owner,
     repo: repository,
-    name: varname,
+    name: varname
   });
 };
 
@@ -159,7 +159,7 @@ bootstrap()
       // eslint-disable-next-line no-console
       core.setFailed(err.message);
       console.error(err);
-    },
+    }
   )
   .then(() => {
     process.exit();
