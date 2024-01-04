@@ -6,7 +6,7 @@
   "repository": "https://github.com/action-pack/increment",
   "scripts": {
     "lint": "eslint index.js",
-    "build": "ncc build index.js -o dist",
+    "build": "ncc build index.js -m -o dist",
     "build_stats": "ncc build index.js -s --stats-out dist/stats -o dist"
   },
   "dependencies": {
