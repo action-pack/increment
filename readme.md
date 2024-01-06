@@ -56,7 +56,9 @@ with:
 
     This will happen if you use ```secrets.GITHUB_TOKEN```.
 
-    You need to create a [personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) instead. Go to your Github settings, select 'Developer settings' and then 'Personal access tokens' and create a new token. Store its value in a secret, for example ```MY_TOKEN```.
+    You need to create a [personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) instead.
+
+    Go to your Github settings, select 'Developer settings' --> 'Personal access tokens' --> 'Tokens (classic)' and create a new token. Store its value in a secret, for example ```MY_TOKEN```.
 
     Then refer to it like this:
     
