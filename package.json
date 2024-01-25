@@ -14,7 +14,7 @@
     "@actions/github": "^5.1.1"
   },
   "devDependencies": {
-    "husky": "^8.0.0",
+    "husky": "^9.0.0",
     "lint-staged": "^15.0.0",
     "eslint-plugin-jsdoc": "^48.0.0",
     "eslint-config-strongloop": "^2.1.0"
