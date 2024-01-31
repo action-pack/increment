@@ -11,6 +11,7 @@
       "automerge": true,
       "matchUpdateTypes": ["minor", "patch"],
       "matchDepTypes": ["devDependencies"],
+      "schedule": ["on the first day of the month"]
     }
   ],
   "forkProcessing": "enabled"
