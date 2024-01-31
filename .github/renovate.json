@@ -6,8 +6,11 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": ["eslint"],
-      "groupName": "eslint",
+      "groupName": "devDeps",
+      "description": "Automerge minor updates of devDeps",
+      "automerge": true,
+      "matchUpdateTypes": ["minor"],
+      "matchDepTypes": ["devDependencies"],
       "schedule": ["on the first day of the month"]
     }
   ],
