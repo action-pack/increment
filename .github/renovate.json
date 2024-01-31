@@ -9,7 +9,7 @@
       "groupName": "devDeps",
       "description": "Automerge minor updates of devDeps",
       "automerge": true,
-      "matchUpdateTypes": ["minor"],
+      "matchUpdateTypes": ["minor", "patch"],
       "matchDepTypes": ["devDependencies"],
       "schedule": ["on the first day of the month"]
     }
