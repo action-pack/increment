@@ -1,3 +1,4 @@
+---
 name: "Increment variable"
 author: "action-pack"
 description: "Action to increment a repository variable. Useful for increasing a version number for example."
@@ -34,6 +35,10 @@ inputs:
   token:
     description: Repository access token
     required: true
+
+outputs:
+  value:
+    description: The incremented value
 
 runs:
   using: node20
