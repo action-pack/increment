@@ -117,6 +117,7 @@ const bootstrap = async () => {
       const response = await setVariable(new_value);
 
       if (response.status === 204) {
+        core.setOutput("value", new_value);
         if (parseInt(amount, 10) === 0) {
           return ("Amount was set to zero, value stays at " + old_value + ".");
         }
@@ -135,6 +136,7 @@ const bootstrap = async () => {
       const response = await createVariable(amount);
 
       if (response.status === 201) {
+        core.setOutput("value", amount);
         return "Succesfully created variable " + name + " with value " + amount + ".";
       }
 
