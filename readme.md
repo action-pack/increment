@@ -9,13 +9,13 @@
 
 Action to increment a repository variable. Useful for increasing a version number for example.
 
-It also supports alphanumeric variables, for example `ABC1` will be increased to `ABC2`.
+## Features ✨
 
-If the target variable does not exist, it will be automaticly created.
+  - Automaticly creates the target variable if it does not exist
+  - Supports alphanumeric variables, for example `ABC1` will be increased to `ABC2`
+  - An `amount` parameter for if you want to increment by a custom amount
 
-If you want to increment by another amount than the default (1), you can set the ```amount``` parameter.
-
-## Usage
+## Usage 🚀
 
 ```YAML
 uses: action-pack/increment@v2
@@ -24,7 +24,7 @@ with:
   token: ${{ secrets.REPO_ACCESS_TOKEN }}
 ```
 
-## Inputs
+## Inputs 📝
 
 ### name
 
@@ -50,7 +50,7 @@ with:
 
 **Optional** `Boolean` Indicates the repo is an [organization](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-organizations).
 
-## FAQ
+## FAQ 💬
 
   * ### Why do I get the error '*Resource not accessible by integration*'?
 
@@ -66,5 +66,5 @@ with:
     token: ${{ secrets.MY_TOKEN }}
     ```
 
-## Stars
+## Stars 🌟
 [![Stars](https://starchart.cc/action-pack/increment.svg?variant=adaptive)](https://starchart.cc/action-pack/increment)
