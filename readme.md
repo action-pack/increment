@@ -19,6 +19,7 @@ Action to increment a repository variable. Useful for increasing a version numbe
 
 ```YAML
 uses: action-pack/increment@v2
+id: increment
 with:
   name: 'MY_VARIABLE'
   token: ${{ secrets.REPO_ACCESS_TOKEN }}
@@ -51,6 +52,10 @@ with:
 **Optional** `Boolean` Indicates the repo is an [organization](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-organizations).
 
 ## FAQ 💬
+
+  * ### How do I read the value after incrementing?
+
+    If you need to get the value after the increment, use: `${{ steps.increment.outputs.value }}`
 
   * ### Why do I get the error '*Resource not accessible by integration*'?
 
