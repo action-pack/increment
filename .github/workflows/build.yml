@@ -95,8 +95,6 @@ jobs:
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           body: |
             ${{ steps.changelog.outputs.changes }}
-
-            **Full Changelog**: https://github.com/${{ github.repository }}/compare//${{ vars.TAG }}...v${{ vars.MAJOR }}.${{ vars.MINOR }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
       -
         name: Update major release
@@ -107,8 +105,6 @@ jobs:
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           body: |
             ${{ steps.changelog.outputs.changes }}
-
-            **Full Changelog**: https://github.com/${{ github.repository }}/compare//${{ vars.TAG }}...v${{ vars.MAJOR }}.${{ vars.MINOR }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
       -
         name: Store tag
