@@ -122,10 +122,10 @@ const bootstrap = async () => {
           return ("Amount was set to zero, value stays at " + old_value + ".");
         }
         if (parseInt(amount, 10) < 0) {
-          return ("Succesfully decremented " + name + " from " + old_value + " to " + new_value + ".");
+          return ("Successfully decremented " + name + " from " + old_value + " to " + new_value + ".");
         }
         if (parseInt(amount, 10) > 0) {
-          return ("Succesfully incremented " + name + " from " + old_value + " to " + new_value + ".");
+          return ("Successfully incremented " + name + " from " + old_value + " to " + new_value + ".");
         }
       }
 
@@ -137,7 +137,7 @@ const bootstrap = async () => {
 
       if (response.status === 201) {
         core.setOutput("value", amount);
-        return "Succesfully created variable " + name + " with value " + amount + ".";
+        return "Successfully created variable " + name + " with value " + amount + ".";
       }
 
       throw new Error("ERROR: Wrong status was returned: " + response.status);
