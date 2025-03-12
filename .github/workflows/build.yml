@@ -92,27 +92,27 @@ jobs:
         with:
           tag: "v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           title: "v${{ vars.MAJOR }}.${{ vars.MINOR }}"
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           body: |
             ${{ steps.changelog.outputs.changes }}
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
       -
         name: Update major release
         uses: action-pack/github-release@v2
         with:
           tag: "v${{ vars.MAJOR }}"
           title: "v${{ vars.MAJOR }}"
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           commit: "release/v${{ vars.MAJOR }}.${{ vars.MINOR }}"
           body: |
             ${{ steps.changelog.outputs.changes }}
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
       -
         name: Store tag
         uses: action-pack/set-variable@v1
         with:
           name: 'TAG'
-          value: 'v${{ vars.MAJOR }}.${{ vars.MINOR }}'
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          value: 'v${{ vars.MAJOR }}.${{ vars.MINOR }}'
       -
         name: Increment version variable
         uses: action-pack/bump@v2
