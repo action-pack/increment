@@ -59,8 +59,6 @@ const createVariable = (data) => {
 
   return octokit.request(url, {
     name: name,
-    owner: owner,
-    repo: repository,
     visibility: visibility,
     value: data
   });
@@ -72,8 +70,7 @@ const setVariable = (data) => {
   url += "/actions/variables/" + name;
 
   return octokit.request(url, {
-    owner: owner,
-    repo: repository,
+    name: name,
     value: data
   });
 };
@@ -83,10 +80,7 @@ const getVariable = (varname) => {
   let url = "GET " + path_();
   url += "/actions/variables/" + varname;
 
-  return octokit.request(url, {
-    owner: owner,
-    repo: repository
-  });
+  return octokit.request(url);
 };
 
 const bootstrap = async () => {
