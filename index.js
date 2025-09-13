@@ -4,6 +4,7 @@ const github = require("@actions/github");
 const token = core.getInput("token");
 const octokit = github.getOctokit(token);
 
+const visibility = "all";
 const name = input("name", "1");
 const amount = input("amount", "1");
 const push_to_org = (input("org", "") !== "");
@@ -57,9 +58,10 @@ const createVariable = (data) => {
   url += "/actions/variables";
 
   return octokit.request(url, {
+    name: name,
     owner: owner,
     repo: repository,
-    name: name,
+    visibility: visibility,
     value: data
   });
 };
@@ -70,9 +72,9 @@ const setVariable = (data) => {
   url += "/actions/variables/" + name;
 
   return octokit.request(url, {
+    name: name,
     owner: owner,
     repo: repository,
-    name: name,
     value: data
   });
 };
@@ -83,9 +85,9 @@ const getVariable = (varname) => {
   url += "/actions/variables/" + varname;
 
   return octokit.request(url, {
+    name: varname,
     owner: owner,
-    repo: repository,
-    name: varname
+    repo: repository
   });
 };
 
