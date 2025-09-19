@@ -7,9 +7,9 @@
   "packageRules": [
     {
       "groupName": "devDeps",
-      "description": "Automerge minor updates of devDeps",
+      "description": "Automerge updates of devDeps",
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"],
+      "automergeType": "branch",
       "matchDepTypes": ["devDependencies"],
       "schedule": ["on the first day of the month"]
     }
