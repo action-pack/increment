@@ -41,5 +41,5 @@ outputs:
     description: The incremented value
 
 runs:
-  using: node20
+  using: node24
   main: dist/index.js
