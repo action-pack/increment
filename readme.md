@@ -72,4 +72,4 @@ with:
     ```
 
 ## Stars 🌟
-[![Stars](https://starchart.cc/action-pack/increment.svg?variant=adaptive)](https://starchart.cc/action-pack/increment)
+![Stargazers](https://raw.githubusercontent.com/star-stats/stars/refs/heads/data/charts/action-pack-increment.svg)
