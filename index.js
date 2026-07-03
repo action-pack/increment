@@ -112,6 +112,10 @@ const bootstrap = async () => {
     if (exists) old_value = response.data.value;
 
   } catch (e) {
+    if (e.status !== 404) {
+      throw e;
+    }
+
     // Variable does not exist
   }
 
