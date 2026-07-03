@@ -100,6 +100,7 @@ jobs:
         name: Update major release
         uses: action-pack/github-release@v2
         with:
+          latest: false
           tag: "v${{ vars.MAJOR }}"
           title: "v${{ vars.MAJOR }}"
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
