@@ -31,26 +31,34 @@ function input(name, def) {
 }
 
 function increment(string, amount) {
+  const step = Number.parseInt(amount, 10);
+
+  if (!Number.isInteger(step)) {
+    throw new Error(`Invalid amount '${amount}', expected an integer.`);
+  }
+
+  const value = String(string || "");
+
   // Extract string's numbers
-  var numbers = string.match(/\d+/g) || [];
+  const matches = [...value.matchAll(/\d+/g)];
+
+  if (matches.length === 0) {
+    throw new Error(`Value '${value}' does not contain a number to increment.`);
+  }
 
   // Increment the last number by the amount
-  var lastNumberIndex = numbers.length - 1;
-  var lastNumber = parseInt(numbers[lastNumberIndex], 10) || 0;
-  numbers[lastNumberIndex] = (lastNumber + parseInt(amount, 10)).toString();
+  const lastMatch = matches[matches.length - 1];
+  const oldNumber = lastMatch[0];
+  const oldIndex = lastMatch.index;
 
-  // Reconstruct the string with incremented numbers and leading zeroes
-  var result = string.replace(/\d+/g, function(match) {
-    var currentNumber = numbers.shift();
-    if (match.startsWith("0")) {
-      while (currentNumber.length < match.length) {
-        currentNumber = "0" + currentNumber;
-      }
-    }
-    return currentNumber;
-  });
+  let newNumber = (Number.parseInt(oldNumber, 10) + step).toString();
 
-  return result;
+  // Reconstruct the string with incremented number and leading zeroes
+  if (oldNumber.startsWith("0") && !newNumber.startsWith("-")) {
+    newNumber = newNumber.padStart(oldNumber.length, "0");
+  }
+
+  return value.slice(0, oldIndex) + newNumber + value.slice(oldIndex + oldNumber.length);
 }
 
 const createVariable = (data) => {
