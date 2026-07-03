@@ -30,13 +30,17 @@ function input(name, def) {
 
 }
 
-function increment(string, amount) {
+function parseAmount(amount) {
   const step = Number.parseInt(amount, 10);
 
-  if (!Number.isInteger(step)) {
+  if (!Number.isInteger(step) || step.toString() !== amount.trim()) {
     throw new Error(`Invalid amount '${amount}', expected an integer.`);
   }
 
+  return step;
+}
+
+function increment(string, step) {
   const value = String(string || "");
 
   // Extract string's numbers
@@ -103,6 +107,7 @@ const bootstrap = async () => {
 
   let exists = false;
   let old_value = "";
+  const step = parseAmount(amount);
 
   try {
 
@@ -127,18 +132,18 @@ const bootstrap = async () => {
 
     if (exists) {
 
-      let new_value = increment(old_value, amount);
+      let new_value = increment(old_value, step);
       const response = await setVariable(new_value);
 
       if (response.status === 204) {
         core.setOutput("value", new_value);
-        if (parseInt(amount, 10) === 0) {
+        if (step === 0) {
           return ("Amount was set to zero, value stays at " + old_value + ".");
         }
-        if (parseInt(amount, 10) < 0) {
+        if (step < 0) {
           return ("Successfully decremented " + name + " from " + old_value + " to " + new_value + ".");
         }
-        if (parseInt(amount, 10) > 0) {
+        if (step > 0) {
           return ("Successfully incremented " + name + " from " + old_value + " to " + new_value + ".");
         }
       }
@@ -147,11 +152,12 @@ const bootstrap = async () => {
 
     } else {
 
-      const response = await createVariable(amount);
+      const value = step.toString();
+      const response = await createVariable(value);
 
       if (response.status === 201) {
-        core.setOutput("value", amount);
-        return "Successfully created variable " + name + " with value " + amount + ".";
+        core.setOutput("value", value);
+        return "Successfully created variable " + name + " with value " + value + ".";
       }
 
       throw new Error("ERROR: Wrong status was returned: " + response.status);
